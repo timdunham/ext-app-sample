@@ -14,17 +14,19 @@ export interface ReceivedMessageState {
 // Use @typeName and isActionType for type detection that works even after serialization/deserialization.
 
 export interface ReceiveMessage { type: 'RECEIVE_MESSAGE', message: string }
+export interface ClearMessages { type: 'CLEAR_MESSAGES' }
 
 // Declare a 'discriminated union' type. This guarantees that all references to 'type' properties contain one of the
 // declared type strings (and not any other arbitrary string).
-export type KnownAction = ReceiveMessage;
+export type KnownAction = ReceiveMessage | ClearMessages;
 
 // ----------------
 // ACTION CREATORS - These are functions exposed to UI components that will trigger a state transition.
 // They don't directly mutate state, but they can have external side-effects (such as loading data).
 
 export const actionCreators = {
-    receiveMessage: (message: string) => ({ type: 'RECEIVE_MESSAGE', message: message } as ReceiveMessage)
+    receiveMessage: (message: string) => ({ type: 'RECEIVE_MESSAGE', message: message } as ReceiveMessage),
+    clearMessages: () => ({ type: 'CLEAR_MESSAGES' } as ClearMessages)
 };
 
 // ----------------
@@ -44,6 +46,11 @@ export const reducer: Reducer<ReceivedMessageState> = (state: ReceivedMessageSta
             return {
                 received: true,
                 messages: [...state.messages, action.message]
+            };
+        case 'CLEAR_MESSAGES':
+            return {
+                ...state,
+                messages: []
             };
         default:
             return state;

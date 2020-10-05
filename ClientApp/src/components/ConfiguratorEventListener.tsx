@@ -10,6 +10,10 @@ export default function ConfiguratorEventListener() {
             const eventData = (event.data);
             const command = eventData && eventData.command;
             switch (command) {
+                case "RollbackPreviousMessages":
+                case "MessagesEnd":
+                    dispatch(ReceivedMessages.actionCreators.receiveMessage(eventData.id));
+                    break;
                 case "InitializeEvent":
                     dispatch(ReceivedMessages.actionCreators.receiveMessage(JSON.stringify(eventData.data)));
             }
