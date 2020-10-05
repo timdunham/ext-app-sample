@@ -1,0 +1,56 @@
+<Ruleset Namespace="Default" Name="SampleExternalApplication" DefaultPageCaption="" EntityId="e25f3364-3a49-4001-ac4e-abc76d100abb" ExternalUIName="Infor Design System (V2 Engine)" BackgroundProcessingEngineName="version2" IsStatelessEngineCompliant="true">
+  <Tags />
+  <ComponentAttributes />
+  <RuleTree Type="Interactive">
+    <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Screen" Caption="Restart" ConditionExpression="" Enabled="true">
+      <Screen Title="" ShowTitle="=False" ShowLine="=False" ShowDescription="=False" ShowExpandCollapse="=False" IsVisible="=True" Description="" PageBreakAfter="=False" PageCaption="" AppLink="" InfoLink="" ImageLink="" Pause="=False" PauseMessage="" PauseMessageStyle="" PauseTitle="" ScreenStyle="">
+        <ScreenOption Sequence="1" Name="restart" Caption="restart" DisplayType="5" AutoContinue="=1" SelectOptionsImageLinkFieldExpression="ImageLink">
+          <Columns>
+            <Column ColumnName="Value" IsVisible="true" />
+            <Column ColumnName="Description" IsVisible="true" />
+          </Columns>
+          <LookupCollectionOption Value="" Description="" />
+        </ScreenOption>
+      </Screen>
+      <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Set External Application" Caption="Set the External Application URL" ConditionExpression="" Enabled="true">
+        <RuleData>
+          <Tab Key="" DisplayName="ExternalApplicationSettingsTab">
+            <Properties Key="Url" DisplayName="Url">
+              <Property Key="Url" DisplayName="URL" Value="https://localhost:5001" IsRequired="true" ExpressionType="Expression" SelectionType="Optional" SelectionSource="Threekit" />
+              <Property Key="TabName" DisplayName="Tab Caption" Value="Sample External Application" ExpressionType="Expression" SelectionType="None" />
+              <Property Key="WaitForMessage" DisplayName="Wait For Message" Value="=False" DefaultValue="=True" IsRequired="true" ExpressionType="Expression" SelectionType="Predefined" SelectionSource="BoolExpression" />
+            </Properties>
+          </Tab>
+          <Tab Key="" DisplayName="ExternalApplicationUrlParametersTab">
+            <List Key="UrlParameters" DisplayName="UrlParameters" AllowFiltering="true">
+              <Column Key="Name" IsRequired="true" />
+              <Column Key="Value" IsRequired="true" ExpressionType="Expression" />
+            </List>
+          </Tab>
+        </RuleData>
+      </Rule>
+      <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Set External Application Data" Caption="Specify the variable name of an event" ConditionExpression="" Enabled="true">
+        <RuleData>
+          <Properties Key="Data" DisplayName="Data">
+            <Property Key="DataVariableName" DisplayName="Data Variable Name" Value="InitializeEvent" ExpressionType="Expression" SelectionType="Predefined" SelectionSource="ComponentAttributes" />
+          </Properties>
+        </RuleData>
+      </Rule>
+      <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Variable" Caption="Fill the event variable with data" ConditionExpression="" Enabled="true">
+        <vars>
+          <var id="e7eee5d2-c66e-4d92-8f9e-2de71ffe7eac" name="InitializeEvent.command">
+            <value>InitializeEvent</value>
+          </var>
+          <var id="1297719d-3413-4a74-88bb-b13e23f5434c" name="InitializeEvent.data">
+            <value>=createset()</value>
+          </var>
+          <var id="79526953-d4c1-45d1-9d9a-036c5418b93d" name="InitializeEvent.data.text1">
+            <value>=ToString(DateTimeNow())</value>
+          </var>
+        </vars>
+      </Rule>
+    </Rule>
+  </RuleTree>
+  <RuleTree Type="PostComponent" />
+  <RuleTree Type="PostConfiguration" />
+</Ruleset>
