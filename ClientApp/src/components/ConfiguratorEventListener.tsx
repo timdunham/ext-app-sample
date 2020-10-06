@@ -4,6 +4,7 @@ import * as ReceivedMessages from '../store/ReceivedMessages'
 import { useHistory } from 'react-router-dom'
 import * as SetScreenOptionState from '../store/SetScreenOptionStore';
 import * as FocusScreenOptionState from '../store/FocusScreenOptionStore';
+import * as SaveOutputFileState from '../store/SaveOutputFileStore';
 
 export default function ConfiguratorEventListener() {
     var dispatch = useDispatch();
@@ -31,6 +32,10 @@ export default function ConfiguratorEventListener() {
                     break;
                 case "ProcessingEvent":
                     history.push("/send/processing");
+                    break;
+                case "SaveOutputFileEvent":
+                    dispatch(SaveOutputFileState.actionCreators.setScreenOptionId(eventData.data.screenId));
+                    history.push("/send/saveOutputFile");
                     break;
                 case "SetScreenOptionEvent":
                     dispatch(SetScreenOptionState.actionCreators.setScreenOptionId(eventData.data.screenId));

@@ -12,6 +12,7 @@ import FocusScreenOption from './components/Send/FocusScreenOption';
 import Configure from './components/Send/Configure';
 import Finish from './components/Send/Finish';
 import Processing from './components/Send/Processing';
+import SaveOutputFile from './components/Send/SaveOutputFile';
 
 export default () => (
     <Layout>
@@ -19,6 +20,7 @@ export default () => (
         <Route path='/send/home' component={SendHome} />
         <Route path='/send/setScreenOption' component={SetScreenOption} />
         <Route path='/send/focusScreenOption' component={FocusScreenOption} />
+        <Route path='/send/saveOutputFile' component={SaveOutputFile} />
         <Route path='/send/configure' component={Configure} />
         <Route path='/send/finish' component={Finish} />
         <Route path='/send/processing' component={Processing} />
