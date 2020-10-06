@@ -1,21 +1,35 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import * as ReceivedMessages from '../store/ReceivedMessages'
+import { useHistory } from 'react-router-dom'
+import * as SetScreenOptionState from '../store/SetScreenOptionStore';
 
 export default function ConfiguratorEventListener() {
     var dispatch = useDispatch();
+    const history = useHistory();
 
     React.useEffect(() => {
         function handleMessage(event: any) {
             const eventData = (event.data);
             const command = eventData && eventData.command;
+            if (!command) {
+                return;
+            }
+            dispatch(ReceivedMessages.actionCreators.receiveMessage(JSON.stringify(eventData)));
+
             switch (command) {
                 case "RollbackPreviousMessages":
                 case "MessagesEnd":
-                    dispatch(ReceivedMessages.actionCreators.receiveMessage(eventData.id));
-                    break;
                 case "InitializeEvent":
-                    dispatch(ReceivedMessages.actionCreators.receiveMessage(JSON.stringify(eventData.data)));
+                    break;
+                case "ConfigureEvent":
+                    history.push("/send/configure");
+                    break;
+                case "SetScreenOptionEvent":
+                    const message = SetScreenOptionState.actionCreators.setScreenOptionId(eventData.data.screenId);
+                    dispatch(message);
+                    history.push("/send/setScreenOption");
+                    break;
             }
         }
 
@@ -27,12 +41,3 @@ export default function ConfiguratorEventListener() {
     });
     return <div className="event-listener" />;
 }
-
-// const mapStateToProps = null;
-// const mapDispatchToProps = (dispatch: Dispatch) => return {
-//     updateDimensions: (height: number, width: number)=> dispatch(actionCreators.setDimensions(height, width))
-// }
-// export default connect(
-//     null, // Selects which state properties are merged into the component's props
-//     DoorPanelsStore.actionCreators // Selects which action creators are merged into the component's props
-//   )(ConfiguratorExternalApp);
