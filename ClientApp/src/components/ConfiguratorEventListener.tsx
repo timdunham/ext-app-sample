@@ -33,6 +33,9 @@ export default function ConfiguratorEventListener() {
                 case "ProcessingEvent":
                     history.push("/send/processing");
                     break;
+                case "DisplayInformationPaneEvent":
+                    history.push("/send/displayInformationPane");
+                    break;
                 case "SaveOutputFileEvent":
                     dispatch(SaveOutputFileState.actionCreators.setScreenOptionId(eventData.data.screenId));
                     history.push("/send/saveOutputFile");
