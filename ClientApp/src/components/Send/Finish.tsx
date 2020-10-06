@@ -1,8 +1,6 @@
 import * as React from 'react';
-import { useDispatch } from 'react-redux';
 
-const Configure: React.FC = () => {
-  const dispatch = useDispatch();
+const Finish: React.FC = () => {
   const message = "{ \"action\": \"finishConfiguration\" }";
   const sendMessage = ( )=> {
     window.parent.postMessage(JSON.parse(message), "*");
@@ -16,4 +14,4 @@ const Configure: React.FC = () => {
   </div>
 )};
 
-export default Configure;
+export default Finish;

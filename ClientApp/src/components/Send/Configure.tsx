@@ -1,8 +1,6 @@
 import * as React from 'react';
-import { useDispatch } from 'react-redux';
 
 const Configure: React.FC = () => {
-  const dispatch = useDispatch();
   const message = "{ \"action\": \"configure\" }";
   const sendMessage = ( )=> {
     window.parent.postMessage(JSON.parse(message), "*");

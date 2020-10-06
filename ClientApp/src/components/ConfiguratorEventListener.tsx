@@ -29,12 +29,15 @@ export default function ConfiguratorEventListener() {
                 case "FinishConfigurationEvent":
                     history.push("/send/finish");
                     break;
+                case "ProcessingEvent":
+                    history.push("/send/processing");
+                    break;
                 case "SetScreenOptionEvent":
                     dispatch(SetScreenOptionState.actionCreators.setScreenOptionId(eventData.data.screenId));
                     history.push("/send/setScreenOption");
                     break;
                 case "FocusScreenOptionEvent":
-                    const message = FocusScreenOptionState.actionCreators.focusScreenOptionIds(eventData.data.screenId,eventData.data.screenId2);
+                    const message = FocusScreenOptionState.actionCreators.focusScreenOptionIds(eventData.data.screenId, eventData.data.screenId2);
                     dispatch(message);
                     history.push("/send/focusScreenOption");
                     break;

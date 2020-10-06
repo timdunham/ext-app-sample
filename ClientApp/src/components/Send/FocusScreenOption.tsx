@@ -11,7 +11,6 @@ const FocusScreenOption: React.FC = () => {
       action: "focusScreenOption",
       screenOptionId: first?state.screenOptionId:state.screenOptionId2
     }
-
   };
   const sendMessage = (first: boolean) => {
     window.parent.postMessage(createMessage(first), "*")

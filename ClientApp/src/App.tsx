@@ -11,6 +11,7 @@ import SetScreenOption from './components/Send/SetScreenOption';
 import FocusScreenOption from './components/Send/FocusScreenOption';
 import Configure from './components/Send/Configure';
 import Finish from './components/Send/Finish';
+import Processing from './components/Send/Processing';
 
 export default () => (
     <Layout>
@@ -20,6 +21,7 @@ export default () => (
         <Route path='/send/focusScreenOption' component={FocusScreenOption} />
         <Route path='/send/configure' component={Configure} />
         <Route path='/send/finish' component={Finish} />
+        <Route path='/send/processing' component={Processing} />
         <Route path='/receive' component={Receive} />
         <ConfiguratorEventListener />
     </Layout>
