@@ -9,7 +9,7 @@ const Processing: React.FC = () => {
   };
 
   return (<div>
-    <h1>Message: processing</h1>
+    <h1>Message: <code>processing</code></h1>
     This will send the following message to the Configurator IDS UI
     <pre><code>{messageStart}</code></pre>
     After 2 seconds, the following message will be sent to remove the processing message:

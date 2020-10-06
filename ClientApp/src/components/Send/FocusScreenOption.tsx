@@ -18,16 +18,12 @@ const FocusScreenOption: React.FC = () => {
 
   return (
     <div>
-      <h1>Message: focusScreenOption</h1>
+      <h1>Message: <code>focusScreenOption</code></h1>
       Received a message with the following screen id:
       <pre><code>{state.screenOptionId}</code></pre>
       When you send the message it will take the value in the text box and set the value of the screen option using a message like this:
       <br></br>
-      <pre><code>{"{"}<br/>
-       action: "setScreenOption",<br/>
-  screenOptionId: "{state.screenOptionId}"<br/>
-{"}"}
-      </code></pre>
+      <pre><code>{"{\n \"action\": \"setScreenOption\",\n \"screenOptionId\": \"<screen Option Id>\"\n}"}</code></pre>
       <input type="button" onClick={()=>sendMessage(true)} value="Focus Screen Option 1" />
       <input type="button" onClick={()=>sendMessage(false)} value="Focus Screen Option 2" />
     </div>

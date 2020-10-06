@@ -25,10 +25,10 @@ const SaveOutputFile: React.FC = () => {
   }
   return (
     <div>
-      <h1>Message: saveOutputFile</h1>
+      <h1>Message: <code>saveOutputFile</code></h1>
       This message will allow a file to be sent to configurator to be saved as output with the current configuration.
       <br />
-      <pre><code>{"{\n\"action\": \"setScreenOption\",\n\"file\": \"<file from upload control>\"\n}"}</code></pre>
+      <pre><code>{"{\n \"action\": \"setScreenOption\",\n \"file\": \"<file from upload control>\"\n}"}</code></pre>
       <input type="file" ref={uploadRef} />
       <input type="button" onClick={sendMessage} value="Send Message" />
       <br />
