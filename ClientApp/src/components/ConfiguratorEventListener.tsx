@@ -25,6 +25,9 @@ export default function ConfiguratorEventListener() {
                 case "ConfigureEvent":
                     history.push("/send/configure");
                     break;
+                case "FinishConfigurationEvent":
+                    history.push("/send/finish");
+                    break;
                 case "SetScreenOptionEvent":
                     const message = SetScreenOptionState.actionCreators.setScreenOptionId(eventData.data.screenId);
                     dispatch(message);

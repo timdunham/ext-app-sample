@@ -9,6 +9,7 @@ import './custom.css'
 import ConfiguratorEventListener from './components/ConfiguratorEventListener';
 import SetScreenOption from './components/Send/SetScreenOption';
 import Configure from './components/Send/Configure';
+import Finish from './components/Send/Finish';
 
 export default () => (
     <Layout>
@@ -16,6 +17,7 @@ export default () => (
         <Route path='/send/home' component={SendHome} />
         <Route path='/send/setScreenOption' component={SetScreenOption} />
         <Route path='/send/configure' component={Configure} />
+        <Route path='/send/finish' component={Finish} />
         <Route path='/receive' component={Receive} />
         <ConfiguratorEventListener />
     </Layout>
