@@ -8,6 +8,7 @@ import Receive from './components/Receive';
 import './custom.css'
 import ConfiguratorEventListener from './components/ConfiguratorEventListener';
 import SetScreenOption from './components/Send/SetScreenOption';
+import FocusScreenOption from './components/Send/FocusScreenOption';
 import Configure from './components/Send/Configure';
 import Finish from './components/Send/Finish';
 
@@ -16,6 +17,7 @@ export default () => (
         <Route exact path='/' component={Home} />
         <Route path='/send/home' component={SendHome} />
         <Route path='/send/setScreenOption' component={SetScreenOption} />
+        <Route path='/send/focusScreenOption' component={FocusScreenOption} />
         <Route path='/send/configure' component={Configure} />
         <Route path='/send/finish' component={Finish} />
         <Route path='/receive' component={Receive} />

@@ -1,10 +1,12 @@
 import * as ReceivedMessages from './ReceivedMessages';
 import * as SetScreenOptionStore from './SetScreenOptionStore';
+import * as FocusScreenOptionStore from './FocusScreenOptionStore';
 
 // The top-level state object
 export interface ApplicationState {
     receivedMessages: ReceivedMessages.ReceivedMessageState;
     setScreenOption: SetScreenOptionStore.SetScreenOptionState;
+    focusScreenOptions: FocusScreenOptionStore.FocusScreenOptionState;
 }
 
 // Whenever an action is dispatched, Redux will update each top-level application state property using
@@ -12,7 +14,8 @@ export interface ApplicationState {
 // acts on the corresponding ApplicationState property type.
 export const reducers = {
     receivedMessages: ReceivedMessages.reducer,
-    setScreenOption: SetScreenOptionStore.reducer
+    setScreenOption: SetScreenOptionStore.reducer,
+    focusScreenOptions: FocusScreenOptionStore.reducer
 };
 
 // This type can be used as a hint on action creators so that its 'dispatch' and 'getState' params are

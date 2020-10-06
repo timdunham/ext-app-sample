@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import * as ReceivedMessages from '../store/ReceivedMessages'
 import { useHistory } from 'react-router-dom'
 import * as SetScreenOptionState from '../store/SetScreenOptionStore';
+import * as FocusScreenOptionState from '../store/FocusScreenOptionStore';
 
 export default function ConfiguratorEventListener() {
     var dispatch = useDispatch();
@@ -29,9 +30,13 @@ export default function ConfiguratorEventListener() {
                     history.push("/send/finish");
                     break;
                 case "SetScreenOptionEvent":
-                    const message = SetScreenOptionState.actionCreators.setScreenOptionId(eventData.data.screenId);
-                    dispatch(message);
+                    dispatch(SetScreenOptionState.actionCreators.setScreenOptionId(eventData.data.screenId));
                     history.push("/send/setScreenOption");
+                    break;
+                case "FocusScreenOptionEvent":
+                    const message = FocusScreenOptionState.actionCreators.focusScreenOptionIds(eventData.data.screenId,eventData.data.screenId2);
+                    dispatch(message);
+                    history.push("/send/focusScreenOption");
                     break;
             }
         }
