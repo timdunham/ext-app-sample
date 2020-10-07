@@ -8,11 +8,15 @@ const SaveOutputFile: React.FC = () => {
   });
   const uploadRef = React.createRef<HTMLInputElement>();
   const messageSwitchToImageTab: string = "{\n \"action\": \"displayInformationPane\",\n \"pane\": \"image\"\n}";
-  const continueMessage: string = `{\n \"action\": \"configure\"\n}`;
+  const continueMessage: string = "{\n \"action\": \"configure\"\n}";
   const sendMessage = () => {
     if (uploadRef && uploadRef.current && uploadRef.current.files) {
       const f = uploadRef.current.files[0];
-      const setFilenameMessage: string = `{\n \"action\": \"setScreenOption\",\n \"screenOptionId\": \"${state.filenameScreenOptionId}\",\n \"value\": \"${f.name}\"\n}`;
+      const setFilenameMessage: string = `{
+        "action": "setScreenOption",
+        "screenOptionId": "${state.filenameScreenOptionId}",
+        "value": "${f.name}"
+      }`;
       const message = {
         action: "saveOutputFile",
         file: new File([f], f.name, { type: f.type, lastModified: f.lastModified })

@@ -2,6 +2,7 @@ import * as ReceivedMessages from './ReceivedMessages';
 import * as SetScreenOptionStore from './SetScreenOptionStore';
 import * as FocusScreenOptionStore from './FocusScreenOptionStore';
 import * as SaveOutputFileStore from './SaveOutputFileStore';
+import * as RulesetDefinitionStore from './RulesetDefinitionStore';
 
 // The top-level state object
 export interface ApplicationState {
@@ -9,6 +10,7 @@ export interface ApplicationState {
     setScreenOption: SetScreenOptionStore.SetScreenOptionState;
     focusScreenOptions: FocusScreenOptionStore.FocusScreenOptionState;
     filenameScreenOption: SaveOutputFileStore.SaveOutputFileState;
+    rulesetDefinition: RulesetDefinitionStore.RulesetState;
 }
 
 // Whenever an action is dispatched, Redux will update each top-level application state property using
@@ -18,7 +20,8 @@ export const reducers = {
     receivedMessages: ReceivedMessages.reducer,
     setScreenOption: SetScreenOptionStore.reducer,
     focusScreenOptions: FocusScreenOptionStore.reducer,
-    filenameScreenOption: SaveOutputFileStore.reducer
+    filenameScreenOption: SaveOutputFileStore.reducer,
+    rulesetDefinition: RulesetDefinitionStore.reducer
 };
 
 // This type can be used as a hint on action creators so that its 'dispatch' and 'getState' params are
