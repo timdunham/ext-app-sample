@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as ReceivedMessages from '../../store/ReceivedMessages';
+import './Message.css';
 
 const renderIcon = (outgoing: boolean) => {
   if (outgoing)

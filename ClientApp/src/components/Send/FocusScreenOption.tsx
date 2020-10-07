@@ -26,8 +26,8 @@ const FocusScreenOption: React.FC = () => {
       When you send the message it will take the value in the text box and set the value of the screen option using a message like this:
       <br></br>
       <pre><code>{"{\n \"action\": \"setScreenOption\",\n \"screenOptionId\": \"<screen Option Id>\"\n}"}</code></pre>
-      <input type="button" onClick={() => sendMessage(true)} value="Focus Screen Option 1" />
-      <input type="button" onClick={() => sendMessage(false)} value="Focus Screen Option 2" />
+      <button onClick={() => sendMessage(true)} className="btn btn-outline-primary">Focus Screen Option 1</button>
+      <button onClick={() => sendMessage(false)} className="btn btn-outline-primary">Focus Screen Option 2</button>
     </div>
   );
 }

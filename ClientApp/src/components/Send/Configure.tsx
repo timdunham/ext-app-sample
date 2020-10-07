@@ -13,7 +13,7 @@ const Configure: React.FC = () => {
     <h1>Message: <code>configure</code></h1>    
     This will send the following message to the Configurator IDS UI
       <pre><code>{message}</code></pre>
-      <input type="button" onClick={sendMessage} value="Send Message" />
+      <button onClick={sendMessage} className="btn btn-outline-primary">Send Message</button>
   </div>
 )};
 

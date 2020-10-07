@@ -24,15 +24,19 @@ const DisplayInformationPane: React.FC = () => {
     <pre><code>{messageStart}</code></pre>
     After 2 seconds, the following message will be sent to return to this tab:
     <pre><code>{messageEnd}</code></pre>
-    <select ref={selectRef}>
-      <option>image</option>
-      <option>detail</option>
-      <option>informationlink</option>
-      <option>summary</option>
-      <option>table</option>
-      <option>datagrid</option>
-    </select>
-    <input type="button" onClick={sendMessage} value="Send Message" />
+    <div className="input-group">
+      <select ref={selectRef} className="custom-select" aria-label="Example select with button addon">
+        <option>image</option>
+        <option>detail</option>
+        <option>informationlink</option>
+        <option>summary</option>
+        <option>table</option>
+        <option>datagrid</option>
+      </select>
+      <div className="input-group-append">
+        <button onClick={sendMessage} className="btn btn-outline-primary" type="button">Send Message</button>
+      </div>
+    </div>
   </div>
   )
 };

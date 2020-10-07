@@ -4,7 +4,7 @@ a {
 }
 
 code {
-  color: #E01A76;
+  color: #810941;
 }
 
 .btn-primary {
@@ -17,18 +17,4 @@ pre {
   border-left: 3px solid darkgray;
   background: lightgray;
   padding-left: 10px;
-}
-
-#ruleset-xml {
-  width: 100%;
-  height: 150px;
-}
-
-.message span {
-  margin-left: 5px;
-}
-
-.message.alert {
-  padding: 5px;
-  margin: 5px 0px;
 }

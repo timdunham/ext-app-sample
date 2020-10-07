@@ -4,7 +4,7 @@ import { actionCreators } from '../../store/ReceivedMessages';
 
 const Processing: React.FC = () => {
   const dispatch = useDispatch();
-  const messageStart = "{\n \"action\": \"processing\",\n \"delay\": 500,\n \"isProcessing\": true,\n \"message\": \"Processing message from external application...\"\n}";
+  const messageStart = "{\n \"action\": \"processing\",\n \"delay\": 100,\n \"isProcessing\": true,\n \"message\": \"Processing message from external application...\"\n}";
   const messageEnd = "{\n \"action\": \"processing\",\n \"isProcessing\": false\n}";
   const sendMessage = () => {
     dispatch(actionCreators.sendMessage(JSON.parse(messageStart)));
@@ -17,7 +17,7 @@ const Processing: React.FC = () => {
     <pre><code>{messageStart}</code></pre>
     After 2 seconds, the following message will be sent to remove the processing message:
     <pre><code>{messageEnd}</code></pre>
-    <input type="button" onClick={sendMessage} value="Send Message" />
+    <button onClick={sendMessage} className="btn btn-outline-primary">Send Message</button>
   </div>
   )
 };

@@ -35,8 +35,15 @@ const SaveOutputFile: React.FC = () => {
       This message will allow a file to be sent to configurator to be saved as output with the current configuration.
       <br />
       <pre><code>{"{\n \"action\": \"setScreenOption\",\n \"file\": \"<file from upload control>\"\n}"}</code></pre>
-      <input type="file" ref={uploadRef} />
-      <input type="button" onClick={sendMessage} value="Send Message" />
+      <div className="input-group">
+        <div className="custom-file">
+          <input ref={uploadRef} type="file" className="custom-file-input" id="inputGroupFile" aria-describedby="inputGroupFileAddon" />
+          <label className="custom-file-label" htmlFor="inputGroupFile">Choose file</label>
+        </div>
+        <div className="input-group-append">
+          <button onClick={sendMessage} className="btn btn-outline-primary" type="button" id="inputGroupFileAddon">Send Message</button>
+        </div>
+      </div>
       <br />
       This will also send the following message to switch to the image tab:
       <pre><code>{messageSwitchToImageTab}</code></pre>

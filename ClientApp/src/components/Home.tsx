@@ -2,6 +2,8 @@ import * as React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ApplicationState } from '../store';
 import * as RulesetDefinitionStore from '../store/RulesetDefinitionStore'
+import './Home.css';
+
 const Home: React.FC = () => {
   const dispatch = useDispatch();
   dispatch(RulesetDefinitionStore.actionCreators.requestRulesetDefinition());
