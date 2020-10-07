@@ -12,7 +12,8 @@ const renderIcon = (outgoing: boolean) => {
 }
 
 const Message: React.FC<ReceivedMessages.Message> = (props: ReceivedMessages.Message) => {
-  return (<div className="message alert alert-primary" title={props.message} >
+  const classname: string = `message alert ${props.outgoing ? "alert-primary" : "alert-success"}`;
+  return (<div className={classname} title={props.message} >
     {renderIcon(props.outgoing)}
     <span>{props.command}</span>
   </div>);

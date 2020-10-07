@@ -1,4 +1,3 @@
-import { send } from 'process';
 import { Action, Reducer } from 'redux';
 
 export interface ReceivedMessageState {
@@ -19,7 +18,7 @@ export type KnownAction = ReceiveMessage | SendMessage | ClearMessages;
 
 export const actionCreators = {
     receiveMessage: (message: string) => ({ type: 'RECEIVE_MESSAGE', message: message } as ReceiveMessage),
-    sendMessage: (message: string) => ({ type: 'SEND_MESSAGE', message: message } as SendMessage),
+    sendMessage: (message: any) => ({ type: 'SEND_MESSAGE', message: message } as SendMessage),
     clearMessages: () => ({ type: 'CLEAR_MESSAGES' } as ClearMessages)
 };
 
@@ -42,6 +41,7 @@ export const reducer: Reducer<ReceivedMessageState> = (state: ReceivedMessageSta
             };
         case 'SEND_MESSAGE':
             const sendCommand = action.message.action || "unknown";
+            window.parent.postMessage(action.message, "*");
             return {
                 ...state,
                 messages: [...state.messages, { outgoing: true, command: sendCommand, message: JSON.stringify(action.message)}]

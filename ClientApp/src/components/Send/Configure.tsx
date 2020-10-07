@@ -1,9 +1,12 @@
 import * as React from 'react';
+import { useDispatch } from 'react-redux';
+import { actionCreators } from '../../store/ReceivedMessages';
 
 const Configure: React.FC = () => {
+  const dispatch = useDispatch();
   const message = "{\n \"action\": \"configure\"\n}";
   const sendMessage = ( )=> {
-    window.parent.postMessage(JSON.parse(message), "*");
+    dispatch(actionCreators.sendMessage(JSON.parse(message)));
   };
 
   return (<div>

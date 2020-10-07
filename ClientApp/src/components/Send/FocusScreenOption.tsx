@@ -1,19 +1,21 @@
 import * as React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { ApplicationState } from '../../store';
+import * as ReceivedMessages from '../../store/ReceivedMessages';
 
 const FocusScreenOption: React.FC = () => {
+  const dispatch = useDispatch();
   const state = useSelector((state: ApplicationState) => {
     return state.focusScreenOptions;
   });
   const createMessage = (first: boolean) => {
     return {
       action: "focusScreenOption",
-      screenOptionId: first?state.screenOptionId:state.screenOptionId2
+      screenOptionId: first ? state.screenOptionId : state.screenOptionId2
     }
   };
   const sendMessage = (first: boolean) => {
-    window.parent.postMessage(createMessage(first), "*")
+    dispatch(ReceivedMessages.actionCreators.sendMessage(createMessage(first)));
   }
 
   return (
@@ -24,8 +26,8 @@ const FocusScreenOption: React.FC = () => {
       When you send the message it will take the value in the text box and set the value of the screen option using a message like this:
       <br></br>
       <pre><code>{"{\n \"action\": \"setScreenOption\",\n \"screenOptionId\": \"<screen Option Id>\"\n}"}</code></pre>
-      <input type="button" onClick={()=>sendMessage(true)} value="Focus Screen Option 1" />
-      <input type="button" onClick={()=>sendMessage(false)} value="Focus Screen Option 2" />
+      <input type="button" onClick={() => sendMessage(true)} value="Focus Screen Option 1" />
+      <input type="button" onClick={() => sendMessage(false)} value="Focus Screen Option 2" />
     </div>
   );
 }

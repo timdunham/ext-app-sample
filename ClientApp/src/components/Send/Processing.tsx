@@ -1,11 +1,14 @@
 import * as React from 'react';
+import { useDispatch } from 'react-redux';
+import { actionCreators } from '../../store/ReceivedMessages';
 
 const Processing: React.FC = () => {
+  const dispatch = useDispatch();
   const messageStart = "{\n \"action\": \"processing\",\n \"delay\": 500,\n \"isProcessing\": true,\n \"message\": \"Processing message from external application...\"\n}";
   const messageEnd = "{\n \"action\": \"processing\",\n \"isProcessing\": false\n}";
   const sendMessage = () => {
-    window.parent.postMessage(JSON.parse(messageStart), "*");
-    window.setTimeout(() => window.parent.postMessage(JSON.parse(messageEnd), "*"), 2000);
+    dispatch(actionCreators.sendMessage(JSON.parse(messageStart)));
+    window.setTimeout(() => dispatch(actionCreators.sendMessage(JSON.parse(messageEnd))), 2000);
   };
 
   return (<div>

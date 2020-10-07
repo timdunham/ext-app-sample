@@ -27,3 +27,8 @@ pre {
 .message span {
   margin-left: 5px;
 }
+
+.message.alert {
+  padding: 5px;
+  margin: 5px 0px;
+}

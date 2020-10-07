@@ -1,8 +1,10 @@
 import * as React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { ApplicationState } from '../../store';
+import { actionCreators } from '../../store/ReceivedMessages';
 
 const SaveOutputFile: React.FC = () => {
+  const dispatch = useDispatch();
   const state = useSelector((state: ApplicationState) => {
     return state.filenameScreenOption
   });
@@ -21,10 +23,10 @@ const SaveOutputFile: React.FC = () => {
         action: "saveOutputFile",
         file: new File([f], f.name, { type: f.type, lastModified: f.lastModified })
       };
-      window.parent.postMessage(message, "*");
-      setTimeout(() => window.parent.postMessage(JSON.parse(setFilenameMessage), "*"), 100);
-      setTimeout(() => window.parent.postMessage(JSON.parse(continueMessage), "*"), 200);
-      setTimeout(() => window.parent.postMessage(JSON.parse(messageSwitchToImageTab), "*"), 300);
+      dispatch(actionCreators.sendMessage(message));
+      setTimeout(() => dispatch(actionCreators.sendMessage(JSON.parse(setFilenameMessage))), 100);
+      setTimeout(() => dispatch(actionCreators.sendMessage(JSON.parse(continueMessage))), 200);
+      setTimeout(() => dispatch(actionCreators.sendMessage(JSON.parse(messageSwitchToImageTab))), 300);
     }
   }
   return (

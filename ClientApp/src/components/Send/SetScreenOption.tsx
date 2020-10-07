@@ -1,8 +1,10 @@
 import * as React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { ApplicationState } from '../../store';
+import { actionCreators } from '../../store/ReceivedMessages';
 
 const SetScreenOption: React.FC = () => {
+  const dispatch = useDispatch();
   const state = useSelector((state: ApplicationState) => {
     return state.setScreenOption;
   });
@@ -17,7 +19,7 @@ const SetScreenOption: React.FC = () => {
 
   };
   const sendMessage = () => {
-    window.parent.postMessage(createMessage(), "*")
+    dispatch(actionCreators.sendMessage(createMessage()));
   }
 
   return (
