@@ -17,7 +17,15 @@ const Home: React.FC = () => {
     <div>
       <h1>Infor CPQ - External Application Tutorial</h1>
       <p>This page will show you how to create an external application for use inside Infor CPQ Configurator.</p>
-      <textarea readOnly ref={textAreaRef} value={state.definition} />
+      <h2>Get Started</h2>
+      <ol>
+        <li>Copy the text below.</li>
+        <li>Open Design Studio</li>
+        <li>Right-click in the Rulesets list and Paste</li>
+        <li>Run Default.SampleExternalApplication from Simulator</li>
+        <li>Click the External Application tab in the information pane</li>
+      </ol>
+      <textarea readOnly ref={textAreaRef} value={state.definition} id="ruleset-xml" />
       <br/>
       <input type="button" value="Copy" onClick={copy} />
     </div>
