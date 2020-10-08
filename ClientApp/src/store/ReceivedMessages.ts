@@ -27,7 +27,7 @@ export type KnownAction = ReceiveMessage | SendMessage | SetVisibility | ClearMe
 export const actionCreators = {
     receiveMessage: (message: string) => ({ type: 'RECEIVE_MESSAGE', message: message } as ReceiveMessage),
     sendMessage: (message: any) => ({ type: 'SEND_MESSAGE', message: message } as SendMessage),
-    setVisibility: (visibility: Visibility) => ({ type: 'SET_VISIBILITY', visibility: visibility }),
+    setVisibility: (visibility: Visibility) => ({ type: 'SET_VISIBILITY', visibility: visibility } as SetVisibility),
     clearMessages: () => ({ type: 'CLEAR_MESSAGES' } as ClearMessages)
 };
 

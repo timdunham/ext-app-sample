@@ -1,7 +1,8 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import * as ReceivedMessages from '../store/ReceivedMessages'
-import { useHistory } from 'react-router-dom'
+import * as ReceivedMessages from '../store/ReceivedMessages';
+import * as Messages from '../store/Messages';
+import { useHistory } from 'react-router-dom';
 import * as SetScreenOptionState from '../store/SetScreenOptionStore';
 import * as FocusScreenOptionState from '../store/FocusScreenOptionStore';
 import * as SaveOutputFileState from '../store/SaveOutputFileStore';
@@ -21,8 +22,10 @@ export default function ConfiguratorEventListener() {
 
             switch (command) {
                 case "RollbackPreviousMessages":
-                case "MessagesEnd":
                 case "InitializeEvent":
+                    break;
+                case "MessagesEnd":
+                    dispatch(ReceivedMessages.actionCreators.sendMessage(Messages.messageCreators.displayInformationPane("externalapplication")));
                     break;
                 case "ConfigureEvent":
                     history.push("/send/configure");
