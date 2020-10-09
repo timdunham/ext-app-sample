@@ -1,25 +1,15 @@
 import * as React from 'react';
-import { useDispatch } from 'react-redux';
-import { actionCreators } from '../../store/ReceivedMessages';
 import * as Messages from '../../store/Messages';
+import ActionChain from './ActionChain';
 
-const format = Messages.FormatMessage;
 const Processing: React.FC = () => {
-  const dispatch = useDispatch();
-  const messageStart = Messages.messageCreators.processing(true, 100, "Processing message from external application...");
-  const messageEnd = Messages.messageCreators.processing(false);
-  const sendMessage = () => {
-    dispatch(actionCreators.sendMessage(messageStart));
-    window.setTimeout(() => dispatch(actionCreators.sendMessage(messageEnd)), 2000);
-  };
+  const leaveAction = Messages.messageCreators.processing(true, 100, "Processing message from external application...");
+  const returnAction = Messages.messageCreators.processing(false);
 
   return (<div>
     <h3>The <code>processing</code> action</h3>
-    This will send the following action to the Configurator IDS UI
-    <pre><code>{format(messageStart)}</code></pre>
-    After 2 seconds, the following action will be sent to remove the processing message:
-    <pre><code>{format(messageEnd)}</code></pre>
-    <button onClick={sendMessage} className="btn btn-outline-primary">Send Message</button>
+    <p>This will send the following action to the Configurator IDS UI.  After 2 seconds, it will send the second message to return to this pane.</p>
+    <ActionChain actions={[leaveAction, returnAction]} delay={2000} />
   </div>
   )
 };

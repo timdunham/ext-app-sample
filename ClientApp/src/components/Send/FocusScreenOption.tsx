@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ApplicationState } from '../../store';
 import * as ReceivedMessages from '../../store/ReceivedMessages';
 import * as Messages from '../../store/Messages';
-import Action from './Action';
+import ActionChain from './ActionChain';
 
 const format = Messages.FormatMessage;
 const FocusScreenOption: React.FC = () => {
@@ -23,9 +23,9 @@ const FocusScreenOption: React.FC = () => {
       <h3>The <code>focusScreenOption</code> action</h3>
       <p>This page alternately send different actions based on 2 different screenOptionIds received as commands</p>
       <p>First screen Option</p>
-      <Action action={createAction(true)} />
+      <ActionChain actions={[createAction(true)]} />
       <p>Second screen Option</p>
-      <Action action={createAction(false)} />
+      <ActionChain actions={[createAction(false)]} />
     </div>
   );
 }

@@ -1,4 +1,4 @@
-<Ruleset Namespace="Default" Name="SampleExternalApplication" DefaultPageCaption="" EntityId="7c03aff2-2337-4189-ac17-549672d65ea2" ExternalUIName="Infor Design System (V2 Engine)" BackgroundProcessingEngineName="version2" IsStatelessEngineCompliant="true">
+<Ruleset Namespace="Default" Name="SampleExternalApplication" DefaultPageCaption="" EntityId="1fdc38f7-2e5c-40ea-8dc3-a670f87ea78e" ExternalUIName="Infor Design System (V2 Engine)" BackgroundProcessingEngineName="version2" IsStatelessEngineCompliant="true">
   <Tags />
   <ComponentAttributes>
     <ComponentAttribute Namespace="Default" Ruleset="SampleExternalApplication" Name="activity" DataType="String" Caption="" Description="" IsLocked="false" IsVisible="true" IsPersistToOutput="true" Tooltip="" InformationMessage="" InfoLink="" AppLink="" IsHighlight="false" AutoContinue="0" IsRequired="false" DefaultGroup="" OptionListID="" DisplayFormat="" DisplayPrecision="" DisplayType="TextBox" PrintCode="" />
@@ -31,15 +31,15 @@
           </Tab>
         </RuleData>
       </Rule>
-      <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Set External Application Data" Caption="Specify the variable name of an event" ConditionExpression="" Enabled="true">
+      <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Set External Application Data" Caption="Specify the variable name of a Command" ConditionExpression="" Enabled="true">
         <RuleData>
           <Properties Key="Data" DisplayName="Data">
-            <Property Key="DataVariableName" DisplayName="Data Variable Name" Value="InitializeEvent" ExpressionType="Expression" SelectionType="Predefined" SelectionSource="ComponentAttributes" />
+            <Property Key="DataVariableName" DisplayName="Data Variable Name" Value="InitializeCommand" ExpressionType="Expression" SelectionType="Predefined" SelectionSource="ComponentAttributes" />
           </Properties>
         </RuleData>
       </Rule>
     </Rule>
-    <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Variable" Caption="Create Option List with all the Actions" ConditionExpression="" Enabled="true">
+    <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Variable" Caption="Create Option List with all the commands" ConditionExpression="" Enabled="true">
       <vars>
         <var id="b71b8df0-7072-4a66-a23b-a1720f13ba9a" name="activityOL">
           <value>=CreateSet</value>
@@ -148,89 +148,89 @@
     </Rule>
     <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Condition" Caption="Configure" ConditionExpression="=activity = &quot;configure&quot;" Enabled="true">
       <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Screen" Caption="Create valueToSet screen option" ConditionExpression="" Enabled="true">
-        <Screen Title="Configure Message" ShowTitle="=True" ShowLine="=False" ShowDescription="=True" ShowExpandCollapse="=False" IsVisible="=True" Description="Configure is a simple message that will cause the engine to continue if it isn't already in a Finish state." PageBreakAfter="=False" PageCaption="" AppLink="" InfoLink="" ImageLink="" Pause="=False" PauseMessage="" PauseMessageStyle="" PauseTitle="" ScreenStyle="">
-          <ScreenOption Sequence="1" Name="valueToSet" Caption="Screen without Autocontinue" SelectOptionsImageLinkFieldExpression="ImageLink">
+        <Screen Title="Configure Action" ShowTitle="=True" ShowLine="=False" ShowDescription="=True" ShowExpandCollapse="=False" IsVisible="=True" Description="Configure is a simple action that will cause the engine to continue if it isn't already in a Finish state." PageBreakAfter="=False" PageCaption="" AppLink="" InfoLink="" ImageLink="" Pause="=False" PauseMessage="" PauseMessageStyle="" PauseTitle="" ScreenStyle="">
+          <ScreenOption Sequence="1" Name="valueWithoutAutoContinue" Caption="Screen without Autocontinue" SelectOptionsImageLinkFieldExpression="ImageLink">
             <Columns />
             <LookupCollectionOption />
           </ScreenOption>
         </Screen>
       </Rule>
-      <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Variable" Caption="ConfigureEvent data" ConditionExpression="" Enabled="true">
+      <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Variable" Caption="ConfigureCommand data" ConditionExpression="" Enabled="true">
         <vars>
-          <var id="435283de-a3f1-441b-86f5-15378007270c" name="ConfigureEvent">
+          <var id="435283de-a3f1-441b-86f5-15378007270c" name="ConfigureCommand">
             <value>=CreateSet()</value>
           </var>
-          <var id="3b5979d6-f52d-4344-9ff8-6b32c94987f3" name="ConfigureEvent.command">
-            <value>ConfigureEvent</value>
+          <var id="3b5979d6-f52d-4344-9ff8-6b32c94987f3" name="ConfigureCommand.command">
+            <value>ConfigureCommand</value>
           </var>
-          <var id="6cb627bf-94e9-4bf2-b9cb-86f05c6218ba" name="ConfigureEvent.data">
+          <var id="6cb627bf-94e9-4bf2-b9cb-86f05c6218ba" name="ConfigureCommand.data">
             <value>=null</value>
           </var>
         </vars>
       </Rule>
-      <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Set External Application Data" Caption="&lt; New Set External Application Data Rule &gt;" ConditionExpression="" Enabled="true">
+      <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Set External Application Data" Caption="register the ConfigureCommand to be sent to the external application" ConditionExpression="" Enabled="true">
         <RuleData>
           <Properties Key="Data" DisplayName="Data">
-            <Property Key="DataVariableName" DisplayName="Data Variable Name" Value="ConfigureEvent" ExpressionType="Expression" SelectionType="Predefined" SelectionSource="ComponentAttributes" />
+            <Property Key="DataVariableName" DisplayName="Data Variable Name" Value="ConfigureCommand" ExpressionType="Expression" SelectionType="Predefined" SelectionSource="ComponentAttributes" />
           </Properties>
         </RuleData>
       </Rule>
     </Rule>
     <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Condition" Caption="FinishConfiguration" ConditionExpression="=activity = &quot;finishConfiguration&quot;" Enabled="true">
-      <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Variable" Caption="ConfigureEvent data" ConditionExpression="" Enabled="true">
+      <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Variable" Caption="FinishConfigurationCommand data" ConditionExpression="" Enabled="true">
         <vars>
-          <var id="435283de-a3f1-441b-86f5-15378007270c" name="FinishConfigurationEvent">
+          <var id="435283de-a3f1-441b-86f5-15378007270c" name="FinishConfigurationCommand">
             <value>=CreateSet()</value>
           </var>
-          <var id="3b5979d6-f52d-4344-9ff8-6b32c94987f3" name="FinishConfigurationEvent.command">
-            <value>FinishConfigurationEvent</value>
+          <var id="3b5979d6-f52d-4344-9ff8-6b32c94987f3" name="FinishConfigurationCommand.command">
+            <value>FinishConfigurationCommand</value>
           </var>
-          <var id="6cb627bf-94e9-4bf2-b9cb-86f05c6218ba" name="FinishConfigurationEvent.data">
+          <var id="6cb627bf-94e9-4bf2-b9cb-86f05c6218ba" name="FinishConfigurationCommand.data">
             <value>=null</value>
           </var>
         </vars>
       </Rule>
-      <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Set External Application Data" Caption="&lt; New Set External Application Data Rule &gt;" ConditionExpression="" Enabled="true">
+      <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Set External Application Data" Caption="register the FinishConfigurationCommand to be sent to the external application" ConditionExpression="" Enabled="true">
         <RuleData>
           <Properties Key="Data" DisplayName="Data">
-            <Property Key="DataVariableName" DisplayName="Data Variable Name" Value="FinishConfigurationEvent" ExpressionType="Expression" SelectionType="Predefined" SelectionSource="ComponentAttributes" />
+            <Property Key="DataVariableName" DisplayName="Data Variable Name" Value="FinishConfigurationCommand" ExpressionType="Expression" SelectionType="Predefined" SelectionSource="ComponentAttributes" />
           </Properties>
         </RuleData>
       </Rule>
     </Rule>
     <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Condition" Caption="SetScreenOption" ConditionExpression="=activity = &quot;setScreenOption&quot;" Enabled="true">
       <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Screen" Caption="Create valueToSet screen option" ConditionExpression="" Enabled="true">
-        <Screen Title="SetScreenOption Message" ShowTitle="=True" ShowLine="=False" ShowDescription="=True" ShowExpandCollapse="=False" IsVisible="=True" Description="The setScreenOption message requires a screen option id.  This can be found as the ScreenOptionId property of a component attribute that has appeard on a screen rule.  This value must be passed to the external application using the Set External Application Data rule.  When you selected this option, the rules sent that event." PageBreakAfter="=False" PageCaption="" AppLink="" InfoLink="" ImageLink="" Pause="=False" PauseMessage="" PauseMessageStyle="" PauseTitle="" ScreenStyle="">
+        <Screen Title="SetScreenOption Action" ShowTitle="=True" ShowLine="=False" ShowDescription="=True" ShowExpandCollapse="=False" IsVisible="=True" Description="The setScreenOption action requires a screen option id.  This can be found as the ScreenOptionId property of a component attribute that has appeard on a screen rule.  This value must be passed to the external application using the Set External Application Data rule.  When you selected this option, the rules sent that command." PageBreakAfter="=False" PageCaption="" AppLink="" InfoLink="" ImageLink="" Pause="=False" PauseMessage="" PauseMessageStyle="" PauseTitle="" ScreenStyle="">
           <ScreenOption Sequence="1" Name="valueToSet" Caption="Value to Set" SelectOptionsImageLinkFieldExpression="ImageLink">
             <Columns />
             <LookupCollectionOption />
           </ScreenOption>
         </Screen>
       </Rule>
-      <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Variable" Caption="SetScreenOptionEvent data" ConditionExpression="" Enabled="true">
+      <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Variable" Caption="SetScreenOptionCommand data" ConditionExpression="" Enabled="true">
         <vars>
-          <var id="435283de-a3f1-441b-86f5-15378007270c" name="SetScreenOptionEvent">
+          <var id="435283de-a3f1-441b-86f5-15378007270c" name="SetScreenOptionCommand">
             <value>=CreateSet()</value>
           </var>
-          <var id="3b5979d6-f52d-4344-9ff8-6b32c94987f3" name="SetScreenOptionEvent.command">
-            <value>SetScreenOptionEvent</value>
+          <var id="3b5979d6-f52d-4344-9ff8-6b32c94987f3" name="SetScreenOptionCommand.command">
+            <value>SetScreenOptionCommand</value>
           </var>
-          <var id="6cb627bf-94e9-4bf2-b9cb-86f05c6218ba" name="SetScreenOptionEvent.data.screenId">
+          <var id="6cb627bf-94e9-4bf2-b9cb-86f05c6218ba" name="SetScreenOptionCommand.data.screenId">
             <value>=valueToSet.screenOptionId</value>
           </var>
         </vars>
       </Rule>
-      <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Set External Application Data" Caption="&lt; New Set External Application Data Rule &gt;" ConditionExpression="" Enabled="true">
+      <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Set External Application Data" Caption="register the SetScreenOptionCommand to be sent to the external application" ConditionExpression="" Enabled="true">
         <RuleData>
           <Properties Key="Data" DisplayName="Data">
-            <Property Key="DataVariableName" DisplayName="Data Variable Name" Value="SetScreenOptionEvent" ExpressionType="Expression" SelectionType="Predefined" SelectionSource="ComponentAttributes" />
+            <Property Key="DataVariableName" DisplayName="Data Variable Name" Value="SetScreenOptionCommand" ExpressionType="Expression" SelectionType="Predefined" SelectionSource="ComponentAttributes" />
           </Properties>
         </RuleData>
       </Rule>
     </Rule>
     <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Condition" Caption="FocusScreenOption" ConditionExpression="=activity = &quot;focusScreenOption&quot;" Enabled="true">
       <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Screen" Caption="Create valueToSet screen option" ConditionExpression="" Enabled="true">
-        <Screen Title="FocusScreenOption Message" ShowTitle="=True" ShowLine="=False" ShowDescription="=True" ShowExpandCollapse="=False" IsVisible="=True" Description="The focusScreenOption message requires a screen option id.  This can be found as the ScreenOptionId property of a component attribute that has appeard on a screen rule.  This value must be passed to the external application using the Set External Application Data rule.  When you selected this option, the rules sent that event." PageBreakAfter="=True" PageCaption="Page 2" AppLink="" InfoLink="" ImageLink="" Pause="=False" PauseMessage="" PauseMessageStyle="" PauseTitle="" ScreenStyle="">
+        <Screen Title="FocusScreenOption Action" ShowTitle="=True" ShowLine="=False" ShowDescription="=True" ShowExpandCollapse="=False" IsVisible="=True" Description="The focusScreenOption action requires a screen option id.  This can be found as the ScreenOptionId property of a component attribute that has appeard on a screen rule.  This value must be passed to the external application using the Set External Application Data rule.  When you selected this option, the rules sent that command." PageBreakAfter="=True" PageCaption="Page 2" AppLink="" InfoLink="" ImageLink="" Pause="=False" PauseMessage="" PauseMessageStyle="" PauseTitle="" ScreenStyle="">
           <ScreenOption Sequence="1" Name="valueToFocus" Caption="Screen Option 1" SelectOptionsImageLinkFieldExpression="ImageLink">
             <Columns />
             <LookupCollectionOption />
@@ -245,85 +245,85 @@
           </ScreenOption>
         </Screen>
       </Rule>
-      <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Variable" Caption="SetScreenOptionEvent data" ConditionExpression="" Enabled="true">
+      <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Variable" Caption="SetScreenOptionCommand data" ConditionExpression="" Enabled="true">
         <vars>
-          <var id="435283de-a3f1-441b-86f5-15378007270c" name="FocusScreenOptionEvent">
+          <var id="435283de-a3f1-441b-86f5-15378007270c" name="FocusScreenOptionCommand">
             <value>=CreateSet()</value>
           </var>
-          <var id="3b5979d6-f52d-4344-9ff8-6b32c94987f3" name="FocusScreenOptionEvent.command">
-            <value>FocusScreenOptionEvent</value>
+          <var id="3b5979d6-f52d-4344-9ff8-6b32c94987f3" name="FocusScreenOptionCommand.command">
+            <value>FocusScreenOptionCommand</value>
           </var>
-          <var id="6cb627bf-94e9-4bf2-b9cb-86f05c6218ba" name="FocusScreenOptionEvent.data.screenId">
+          <var id="6cb627bf-94e9-4bf2-b9cb-86f05c6218ba" name="FocusScreenOptionCommand.data.screenId">
             <value>=valueToFocus.screenOptionId</value>
           </var>
-          <var id="65155d88-390c-4f53-83c2-a7d106723a89" name="FocusScreenOptionEvent.data.screenId2">
+          <var id="65155d88-390c-4f53-83c2-a7d106723a89" name="FocusScreenOptionCommand.data.screenId2">
             <value>=valueToFocusPage2.screenOptionId</value>
           </var>
         </vars>
       </Rule>
-      <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Set External Application Data" Caption="&lt; New Set External Application Data Rule &gt;" ConditionExpression="" Enabled="true">
+      <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Set External Application Data" Caption="register the FocusScreenOptionCommand to be sent to the external application" ConditionExpression="" Enabled="true">
         <RuleData>
           <Properties Key="Data" DisplayName="Data">
-            <Property Key="DataVariableName" DisplayName="Data Variable Name" Value="FocusScreenOptionEvent" ExpressionType="Expression" SelectionType="Predefined" SelectionSource="ComponentAttributes" />
+            <Property Key="DataVariableName" DisplayName="Data Variable Name" Value="FocusScreenOptionCommand" ExpressionType="Expression" SelectionType="Predefined" SelectionSource="ComponentAttributes" />
           </Properties>
         </RuleData>
       </Rule>
     </Rule>
     <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Condition" Caption="Processing" ConditionExpression="=activity = &quot;processing&quot;" Enabled="true">
-      <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Variable" Caption="ConfigureEvent data" ConditionExpression="" Enabled="true">
+      <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Variable" Caption="ConfigureCommand data" ConditionExpression="" Enabled="true">
         <vars>
-          <var id="435283de-a3f1-441b-86f5-15378007270c" name="ProcessingEvent">
+          <var id="435283de-a3f1-441b-86f5-15378007270c" name="ProcessingCommand">
             <value>=CreateSet()</value>
           </var>
-          <var id="3b5979d6-f52d-4344-9ff8-6b32c94987f3" name="ProcessingEvent.command">
-            <value>ProcessingEvent</value>
+          <var id="3b5979d6-f52d-4344-9ff8-6b32c94987f3" name="ProcessingCommand.command">
+            <value>ProcessingCommand</value>
           </var>
-          <var id="6cb627bf-94e9-4bf2-b9cb-86f05c6218ba" name="ProcessingEvent.data">
+          <var id="6cb627bf-94e9-4bf2-b9cb-86f05c6218ba" name="ProcessingCommand.data">
             <value>=null</value>
           </var>
         </vars>
       </Rule>
-      <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Set External Application Data" Caption="&lt; New Set External Application Data Rule &gt;" ConditionExpression="" Enabled="true">
+      <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Set External Application Data" Caption="register the ProcessingCommand to be sent to the external application" ConditionExpression="" Enabled="true">
         <RuleData>
           <Properties Key="Data" DisplayName="Data">
-            <Property Key="DataVariableName" DisplayName="Data Variable Name" Value="ProcessingEvent" ExpressionType="Expression" SelectionType="Predefined" SelectionSource="ComponentAttributes" />
+            <Property Key="DataVariableName" DisplayName="Data Variable Name" Value="ProcessingCommand" ExpressionType="Expression" SelectionType="Predefined" SelectionSource="ComponentAttributes" />
           </Properties>
         </RuleData>
       </Rule>
     </Rule>
     <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Condition" Caption="SaveOutputFile" ConditionExpression="=activity = &quot;saveOutputFile&quot;" Enabled="true">
       <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Screen" Caption="Create valueToSet screen option" ConditionExpression="" Enabled="true">
-        <Screen Title="Save Output File" ShowTitle="=True" ShowLine="=False" ShowDescription="=False" ShowExpandCollapse="=False" IsVisible="=True" Description="" PageBreakAfter="=False" PageCaption="" AppLink="" InfoLink="" ImageLink="" Pause="=False" PauseMessage="" PauseMessageStyle="" PauseTitle="" ScreenStyle="">
+        <Screen Title="Save Output File" ShowTitle="=True" ShowLine="=False" ShowDescription="=True" ShowExpandCollapse="=False" IsVisible="=True" Description="The saveOutputFile action will allow a javascript File object to be sent to configurator and stored as part of the configuration output.  If that file is, for instance, an image, it can be the ImageLink for the configuration." PageBreakAfter="=False" PageCaption="" AppLink="" InfoLink="" ImageLink="" Pause="=False" PauseMessage="" PauseMessageStyle="" PauseTitle="" ScreenStyle="">
           <ScreenOption Sequence="1" Name="filename" Caption="Filename of uploaded file" Locked="=True" SelectOptionsImageLinkFieldExpression="ImageLink">
             <Columns />
             <LookupCollectionOption />
           </ScreenOption>
         </Screen>
       </Rule>
-      <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Variable" Caption="ConfigureEvent data" ConditionExpression="" Enabled="true">
+      <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Variable" Caption="SaveOutputFileCommand data" ConditionExpression="" Enabled="true">
         <vars>
-          <var id="435283de-a3f1-441b-86f5-15378007270c" name="SaveOutputFileEvent">
+          <var id="435283de-a3f1-441b-86f5-15378007270c" name="SaveOutputFileCommand">
             <value>=CreateSet()</value>
           </var>
-          <var id="3b5979d6-f52d-4344-9ff8-6b32c94987f3" name="SaveOutputFileEvent.command">
-            <value>SaveOutputFileEvent</value>
+          <var id="3b5979d6-f52d-4344-9ff8-6b32c94987f3" name="SaveOutputFileCommand.command">
+            <value>SaveOutputFileCommand</value>
           </var>
-          <var id="6cb627bf-94e9-4bf2-b9cb-86f05c6218ba" name="SaveOutputFileEvent.data">
+          <var id="6cb627bf-94e9-4bf2-b9cb-86f05c6218ba" name="SaveOutputFileCommand.data">
             <value>=CreateSet()</value>
           </var>
-          <var id="f7cea496-676c-47c9-9aed-32ef0d635055" name="SaveOutputFileEvent.data.screenId">
+          <var id="f7cea496-676c-47c9-9aed-32ef0d635055" name="SaveOutputFileCommand.data.screenId">
             <value>=filename.ScreenOptionId</value>
           </var>
         </vars>
       </Rule>
-      <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Set External Application Data" Caption="&lt; New Set External Application Data Rule &gt;" ConditionExpression="" Enabled="true">
+      <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Set External Application Data" Caption="register the SaveOutputFileCommand to be sent to the external application" ConditionExpression="" Enabled="true">
         <RuleData>
           <Properties Key="Data" DisplayName="Data">
-            <Property Key="DataVariableName" DisplayName="Data Variable Name" Value="SaveOutputFileEvent" ExpressionType="Expression" SelectionType="Predefined" SelectionSource="ComponentAttributes" />
+            <Property Key="DataVariableName" DisplayName="Data Variable Name" Value="SaveOutputFileCommand" ExpressionType="Expression" SelectionType="Predefined" SelectionSource="ComponentAttributes" />
           </Properties>
         </RuleData>
       </Rule>
-      <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Variable" Caption="Set Image Link" ConditionExpression="" Enabled="true">
+      <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Variable" Caption="Set Image Link" ConditionExpression="=!IsNullOrBlank(filename)" Enabled="true">
         <vars>
           <var id="18bc385b-ef24-446f-8cf8-663e4d3e11e9" name="ImageLink">
             <value>=sys.OutputFolder +  filename</value>
@@ -332,36 +332,36 @@
       </Rule>
     </Rule>
     <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Condition" Caption="Display Information Pane" ConditionExpression="=activity = &quot;displayInformationPane&quot;" Enabled="true">
-      <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Variable" Caption="ConfigureEvent data" ConditionExpression="" Enabled="true">
+      <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Variable" Caption="DisplayInformationPaneCommand data" ConditionExpression="" Enabled="true">
         <vars>
-          <var id="435283de-a3f1-441b-86f5-15378007270c" name="DisplayInformationPaneEvent">
+          <var id="435283de-a3f1-441b-86f5-15378007270c" name="DisplayInformationPaneCommand">
             <value>=CreateSet()</value>
           </var>
-          <var id="3b5979d6-f52d-4344-9ff8-6b32c94987f3" name="DisplayInformationPaneEvent.command">
-            <value>DisplayInformationPaneEvent</value>
+          <var id="3b5979d6-f52d-4344-9ff8-6b32c94987f3" name="DisplayInformationPaneCommand.command">
+            <value>DisplayInformationPaneCommand</value>
           </var>
-          <var id="6cb627bf-94e9-4bf2-b9cb-86f05c6218ba" name="DisplayInformationPaneEvent.data">
+          <var id="6cb627bf-94e9-4bf2-b9cb-86f05c6218ba" name="DisplayInformationPaneCommand.data">
             <value>=null</value>
           </var>
         </vars>
       </Rule>
-      <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Set External Application Data" Caption="&lt; New Set External Application Data Rule &gt;" ConditionExpression="" Enabled="true">
+      <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Set External Application Data" Caption="register the DisplayInformationPaneCommand to be sent to the external application" ConditionExpression="" Enabled="true">
         <RuleData>
           <Properties Key="Data" DisplayName="Data">
-            <Property Key="DataVariableName" DisplayName="Data Variable Name" Value="DisplayInformationPaneEvent" ExpressionType="Expression" SelectionType="Predefined" SelectionSource="ComponentAttributes" />
+            <Property Key="DataVariableName" DisplayName="Data Variable Name" Value="DisplayInformationPaneCommand" ExpressionType="Expression" SelectionType="Predefined" SelectionSource="ComponentAttributes" />
           </Properties>
         </RuleData>
       </Rule>
     </Rule>
-    <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Variable" Caption="Fill the event variable with data" ConditionExpression="" Enabled="true">
+    <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Variable" Caption="Fill the command variable with data" ConditionExpression="" Enabled="true">
       <vars>
-        <var id="e7eee5d2-c66e-4d92-8f9e-2de71ffe7eac" name="InitializeEvent.command">
-          <value>InitializeEvent</value>
+        <var id="e7eee5d2-c66e-4d92-8f9e-2de71ffe7eac" name="InitializeCommand.command">
+          <value>InitializeCommand</value>
         </var>
-        <var id="1297719d-3413-4a74-88bb-b13e23f5434c" name="InitializeEvent.data">
+        <var id="1297719d-3413-4a74-88bb-b13e23f5434c" name="InitializeCommand.data">
           <value>=createset()</value>
         </var>
-        <var id="79526953-d4c1-45d1-9d9a-036c5418b93d" name="InitializeEvent.data.showExternalAppPane">
+        <var id="79526953-d4c1-45d1-9d9a-036c5418b93d" name="InitializeCommand.data.showExternalAppPane">
           <value>=sys.fixed.showExternalAppPane</value>
         </var>
       </vars>
