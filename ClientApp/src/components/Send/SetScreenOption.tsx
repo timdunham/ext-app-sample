@@ -10,8 +10,6 @@ const SetScreenOption: React.FC = () => {
   const state = useSelector((state: ApplicationState) => {
     return state.setScreenOption;
   });
-  const textRef = React.createRef<HTMLInputElement>();
-  const valueToSend = () => (textRef && textRef.current) ? textRef.current.value : ""
   const action = Messages.messageCreators.setScreenOption(state.screenOptionId, value);
 
   return (

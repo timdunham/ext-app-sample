@@ -1,6 +1,5 @@
 import * as React from 'react';
 import * as Messages from '../../store/Messages';
-import Action from './Action';
 import ActionChain from './ActionChain';
 
 const format = Messages.FormatMessage;

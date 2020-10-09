@@ -7,7 +7,7 @@ const Finish: React.FC = () => {
 
   return (<div>
     <h3>The <code>finishConfiguration</code> action</h3>
-    <p>This page will send the following action to the Configurator IDS UI</p>
+    <p>The <code>finishConfiguration</code> will finish the configuration</p>
     <ActionChain actions={[action]} />
   </div>
   )

@@ -55,8 +55,6 @@ export default function ConfiguratorEventListener() {
                     history.push("/send/focusScreenOption");
                     break;
             }
-
-            //there are 3 events where we don't want to show the external application tab,
         }
 
         window.addEventListener("message", handleMessage);
