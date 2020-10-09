@@ -1,31 +1,23 @@
 import * as React from 'react';
-import { useDispatch } from 'react-redux';
-import { actionCreators } from '../../store/ReceivedMessages';
 import * as Messages from '../../store/Messages';
-
-const format = Messages.FormatMessage;
+import ActionChain from './ActionChain';
 
 const DisplayInformationPane: React.FC = () => {
-  const dispatch = useDispatch();
-  const selectRef = React.createRef<HTMLSelectElement>();
-  const value = () => selectRef && selectRef.current ? selectRef.current.value : "<pane e.g. image, detail>"
+  const [pane, setPane] = React.useState("image");
 
-  const startAction = Messages.messageCreators.displayInformationPane("PANE");
+  const startAction = Messages.messageCreators.displayInformationPane(pane);
   const endAction = Messages.messageCreators.displayInformationPane("externalapplication");
-  const sendAction = () => {
-    dispatch(actionCreators.sendMessage(Messages.messageCreators.displayInformationPane(value())));
-    window.setTimeout(() => dispatch(actionCreators.sendMessage(endAction)), 2000);
-  };
 
 
   return (<div>
     <h3>The <code>displayInformationPane</code> action</h3>
-    <p>This page will send the following action to the Configurator IDS UI</p>
-    <pre><code>{format(startAction)}</code></pre>
-    <p>After 2 seconds, the following action will be sent to return to this tab</p>
-    <pre><code>{format(endAction)}</code></pre>
+    <p>This <code>displayInformationPane</code> action cuases the Configurator IDS UI to display the selected information pane.  
+    After 2 seconds, the <code>displayInformationPane</code> action is sent again to return to this tab</p>
     <div className="input-group">
-      <select ref={selectRef} className="custom-select" aria-label="Example select with button addon">
+      <div className="input-group-prepend">
+        <label className="input-group-text">Select a Pane</label> 
+      </div>
+      <select onChange={(e)=> setPane(e.target.value)} className="custom-select" aria-label="Example select with button addon">
         <option>image</option>
         <option>detail</option>
         <option>informationlink</option>
@@ -33,10 +25,9 @@ const DisplayInformationPane: React.FC = () => {
         <option>table</option>
         <option>datagrid</option>
       </select>
-      <div className="input-group-append">
-        <button onClick={sendAction} className="btn btn-outline-primary" type="button">Send Action</button>
-      </div>
     </div>
+    <br/>
+    <ActionChain actions={[startAction, endAction]} delay={2000} />
   </div>
   )
 };

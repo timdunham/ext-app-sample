@@ -21,7 +21,7 @@ const FocusScreenOption: React.FC = () => {
   return (
     <div>
       <h3>The <code>focusScreenOption</code> action</h3>
-      <p>This page alternately send different actions based on 2 different screenOptionIds received as commands</p>
+      <p>This page alternately send different actions based on 2 different <code>screenOptionIds</code> received as commands</p>
       <p>First screen Option</p>
       <ActionChain actions={[createAction(true)]} />
       <p>Second screen Option</p>

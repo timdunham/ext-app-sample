@@ -8,7 +8,8 @@ const Processing: React.FC = () => {
 
   return (<div>
     <h3>The <code>processing</code> action</h3>
-    <p>This will send the following action to the Configurator IDS UI.  After 2 seconds, it will send the second message to return to this pane.</p>
+    <p>This will send the <code>processing</code> action to the Configurator IDS UI.  After 2 seconds, it will send the second the <code>processing</code> action
+    again with <code>isProcessing</code> set to <code>false</code> to hide the processing overlay.</p>
     <ActionChain actions={[leaveAction, returnAction]} delay={2000} />
   </div>
   )

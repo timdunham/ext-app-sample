@@ -1,41 +1,33 @@
 import * as React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { ApplicationState } from '../../store';
-import { actionCreators } from '../../store/ReceivedMessages';
+import * as Messages from '../../store/Messages';
+import ActionChain from './ActionChain';
 
 const SetScreenOption: React.FC = () => {
-  const dispatch = useDispatch();
+  var [value, setValue] = React.useState("");
+
   const state = useSelector((state: ApplicationState) => {
     return state.setScreenOption;
   });
   const textRef = React.createRef<HTMLInputElement>();
   const valueToSend = () => (textRef && textRef.current) ? textRef.current.value : ""
-  const createMessage = () => {
-    return {
-      action: "setScreenOption",
-      screenOptionId: state.screenOptionId,
-      value: valueToSend()
-    }
-
-  };
-  const sendMessage = () => {
-    dispatch(actionCreators.sendMessage(createMessage()));
-  }
+  const action = Messages.messageCreators.setScreenOption(state.screenOptionId, value);
 
   return (
     <div>
       <h3>The <code>setScreenOption</code> action</h3>
-      Received a message with the following screen id:
+      Received a command with the following screen id:
       <pre><code>{state.screenOptionId}</code></pre>
-      When you send the message it will take the value in the text box and set the value of the screen option using a message like this:
-      <br></br>
-      <pre><code>{"{\n \"action\": \"setScreenOption\",\n \"screenOptionId\": \"<screen option id>\",\n \"value\": \"<value from text box>\"\n}"}</code></pre>
+      When you send the action it will take the value in the text box and set the value of the screen option using a message like this:
       <div className="input-group mb-3">
-        <input ref={textRef} type="text" className="form-control" placeholder="Value to send to screen option" aria-label="Value to send" aria-describedby="button-addon2" />
-        <div className="input-group-append">
-          <button onClick={sendMessage} className="btn btn-outline-primary" type="button" id="button-addon2">Send Message</button>
+        <div className="input-group-prepend">
+          <label className="input-group-text">Enter a value</label>
         </div>
+        <input onChange={(e) => setValue(e.target.value)} type="text" className="form-control" placeholder="Value to send to screen option" aria-label="Value to send" aria-describedby="button-addon2" />
       </div>
+      <br />
+      <ActionChain actions={[action]} />
     </div>
   );
 }
