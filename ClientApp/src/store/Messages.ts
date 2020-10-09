@@ -3,7 +3,7 @@ export const FormatMessage = (message: Message): string => {
     return JSON.stringify(message)
         .replace(regex, ",\n  ")
         .replace("{", "{\n  ")
-        .replace("\}", "\n}");
+        .replace("}", "\n}");
 }
 
 export type DisplayInformationPaneMessage = { action: "displayInformationPane", pane: string };

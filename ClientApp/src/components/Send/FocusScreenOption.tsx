@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ApplicationState } from '../../store';
 import * as ReceivedMessages from '../../store/ReceivedMessages';
 import * as Messages from '../../store/Messages';
+import Action from './Action';
 
 const format = Messages.FormatMessage;
 const FocusScreenOption: React.FC = () => {
@@ -10,23 +11,21 @@ const FocusScreenOption: React.FC = () => {
   const state = useSelector((state: ApplicationState) => {
     return state.focusScreenOptions;
   });
-  const createMessage = (first: boolean) => {
+  const createAction = (first: boolean) => {
     return Messages.messageCreators.focusScreenOption(first ? state.screenOptionId : state.screenOptionId2)
   };
-  const sendMessage = (first: boolean) => {
-    dispatch(ReceivedMessages.actionCreators.sendMessage(createMessage(first)));
+  const sendAction = (first: boolean) => {
+    dispatch(ReceivedMessages.actionCreators.sendMessage(createAction(first)));
   }
 
   return (
     <div>
-      <h1>Message: <code>focusScreenOption</code></h1>
-      Received a message with the following screen id:
-      <pre><code>{state.screenOptionId}</code></pre>
-      When you send the message it will take the value in the text box and set the value of the screen option using a message like this:
-      <br></br>
-      <pre><code>{format(createMessage(true))}</code></pre>
-      <button type="button" onClick={() => sendMessage(true)} className="btn btn-outline-primary">Focus Screen Option 1</button>
-      <button type="button" onClick={() => sendMessage(false)} className="btn btn-outline-primary">Focus Screen Option 2</button>
+      <h3>The <code>focusScreenOption</code> action</h3>
+      <p>This page alternately send different actions based on 2 different screenOptionIds received as commands</p>
+      <p>First screen Option</p>
+      <Action action={createAction(true)} />
+      <p>Second screen Option</p>
+      <Action action={createAction(false)} />
     </div>
   );
 }

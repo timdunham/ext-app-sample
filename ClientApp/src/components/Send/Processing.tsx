@@ -14,10 +14,10 @@ const Processing: React.FC = () => {
   };
 
   return (<div>
-    <h1>Message: <code>processing</code></h1>
-    This will send the following message to the Configurator IDS UI
+    <h3>The <code>processing</code> action</h3>
+    This will send the following action to the Configurator IDS UI
     <pre><code>{format(messageStart)}</code></pre>
-    After 2 seconds, the following message will be sent to remove the processing message:
+    After 2 seconds, the following action will be sent to remove the processing message:
     <pre><code>{format(messageEnd)}</code></pre>
     <button onClick={sendMessage} className="btn btn-outline-primary">Send Message</button>
   </div>

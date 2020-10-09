@@ -1,4 +1,4 @@
-<Ruleset Namespace="Default" Name="SampleExternalApplication" DefaultPageCaption="" EntityId="e25f3364-3a49-4001-ac4e-abc76d100abb" ExternalUIName="Infor Design System (V2 Engine)" BackgroundProcessingEngineName="version2" IsStatelessEngineCompliant="true">
+<Ruleset Namespace="Default" Name="SampleExternalApplication" DefaultPageCaption="" EntityId="7c03aff2-2337-4189-ac17-549672d65ea2" ExternalUIName="Infor Design System (V2 Engine)" BackgroundProcessingEngineName="version2" IsStatelessEngineCompliant="true">
   <Tags />
   <ComponentAttributes>
     <ComponentAttribute Namespace="Default" Ruleset="SampleExternalApplication" Name="activity" DataType="String" Caption="" Description="" IsLocked="false" IsVisible="true" IsPersistToOutput="true" Tooltip="" InformationMessage="" InfoLink="" AppLink="" IsHighlight="false" AutoContinue="0" IsRequired="false" DefaultGroup="" OptionListID="" DisplayFormat="" DisplayPrecision="" DisplayType="TextBox" PrintCode="" />
@@ -38,21 +38,8 @@
           </Properties>
         </RuleData>
       </Rule>
-      <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Variable" Caption="Fill the event variable with data" ConditionExpression="" Enabled="true">
-        <vars>
-          <var id="e7eee5d2-c66e-4d92-8f9e-2de71ffe7eac" name="InitializeEvent.command">
-            <value>InitializeEvent</value>
-          </var>
-          <var id="1297719d-3413-4a74-88bb-b13e23f5434c" name="InitializeEvent.data">
-            <value>=createset()</value>
-          </var>
-          <var id="79526953-d4c1-45d1-9d9a-036c5418b93d" name="InitializeEvent.data.text1">
-            <value>=ToString(DateTimeNow())</value>
-          </var>
-        </vars>
-      </Rule>
     </Rule>
-    <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Variable" Caption="&lt; New Variable Rule &gt;" ConditionExpression="" Enabled="true">
+    <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Variable" Caption="Create Option List with all the Actions" ConditionExpression="" Enabled="true">
       <vars>
         <var id="b71b8df0-7072-4a66-a23b-a1720f13ba9a" name="activityOL">
           <value>=CreateSet</value>
@@ -144,6 +131,20 @@
           <LookupCollectionOption Value="" Description="" />
         </ScreenOption>
       </Screen>
+    </Rule>
+    <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Set Fixed Values" Caption="showExternalAppPane" ConditionExpression="" Enabled="true">
+      <RuleData>
+        <List Key="Data" DisplayName="SetFixedValuesDataList" AllowFiltering="true">
+          <Column Key="Attribute" DisplayName="SetFixedValueAttributeNameColumn" IsRequired="true" ExpressionType="Expression" />
+          <Column Key="Value" DisplayName="SetFixedValueColumn" IsRequired="true" ExpressionType="Expression" />
+          <Column Key="Condition" DisplayName="FixedValueConditionColumn" ExpressionType="Expression" />
+          <Value Id="c34b1a3f-aa78-4382-95bb-b6486c7cb1df">
+            <Column Key="Attribute" Value="showExternalAppPane" />
+            <Column Key="Value" Value="=true" />
+            <Column Key="Condition" Value="" />
+          </Value>
+        </List>
+      </RuleData>
     </Rule>
     <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Condition" Caption="Configure" ConditionExpression="=activity = &quot;configure&quot;" Enabled="true">
       <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Screen" Caption="Create valueToSet screen option" ConditionExpression="" Enabled="true">
@@ -349,6 +350,33 @@
           <Properties Key="Data" DisplayName="Data">
             <Property Key="DataVariableName" DisplayName="Data Variable Name" Value="DisplayInformationPaneEvent" ExpressionType="Expression" SelectionType="Predefined" SelectionSource="ComponentAttributes" />
           </Properties>
+        </RuleData>
+      </Rule>
+    </Rule>
+    <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Variable" Caption="Fill the event variable with data" ConditionExpression="" Enabled="true">
+      <vars>
+        <var id="e7eee5d2-c66e-4d92-8f9e-2de71ffe7eac" name="InitializeEvent.command">
+          <value>InitializeEvent</value>
+        </var>
+        <var id="1297719d-3413-4a74-88bb-b13e23f5434c" name="InitializeEvent.data">
+          <value>=createset()</value>
+        </var>
+        <var id="79526953-d4c1-45d1-9d9a-036c5418b93d" name="InitializeEvent.data.showExternalAppPane">
+          <value>=sys.fixed.showExternalAppPane</value>
+        </var>
+      </vars>
+      <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Set Fixed Values" Caption="showExternalAppPane" ConditionExpression="" Enabled="true">
+        <RuleData>
+          <List Key="Data" DisplayName="SetFixedValuesDataList" AllowFiltering="true">
+            <Column Key="Attribute" DisplayName="SetFixedValueAttributeNameColumn" IsRequired="true" ExpressionType="Expression" />
+            <Column Key="Value" DisplayName="SetFixedValueColumn" IsRequired="true" ExpressionType="Expression" />
+            <Column Key="Condition" DisplayName="FixedValueConditionColumn" ExpressionType="Expression" />
+            <Value Id="c34b1a3f-aa78-4382-95bb-b6486c7cb1df">
+              <Column Key="Attribute" Value="showExternalAppPane" />
+              <Column Key="Value" Value="=false" />
+              <Column Key="Condition" Value="" />
+            </Value>
+          </List>
         </RuleData>
       </Rule>
     </Rule>

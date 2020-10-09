@@ -10,20 +10,20 @@ const DisplayInformationPane: React.FC = () => {
   const selectRef = React.createRef<HTMLSelectElement>();
   const value = () => selectRef && selectRef.current ? selectRef.current.value : "<pane e.g. image, detail>"
 
-  const messageStart = Messages.messageCreators.displayInformationPane("PANE");
-  const messageEnd = Messages.messageCreators.displayInformationPane("externalapplication");
-  const sendMessage = () => {
+  const startAction = Messages.messageCreators.displayInformationPane("PANE");
+  const endAction = Messages.messageCreators.displayInformationPane("externalapplication");
+  const sendAction = () => {
     dispatch(actionCreators.sendMessage(Messages.messageCreators.displayInformationPane(value())));
-    window.setTimeout(() => dispatch(actionCreators.sendMessage(messageEnd)), 2000);
+    window.setTimeout(() => dispatch(actionCreators.sendMessage(endAction)), 2000);
   };
 
 
   return (<div>
-    <h1>Message: <code>displayInformationPane</code></h1>
-    This will send the following message to the Configurator IDS UI
-    <pre><code>{format(messageStart)}</code></pre>
-    After 2 seconds, the following message will be sent to return to this tab:
-    <pre><code>{format(messageEnd)}</code></pre>
+    <h3>The <code>displayInformationPane</code> action</h3>
+    <p>This page will send the following action to the Configurator IDS UI</p>
+    <pre><code>{format(startAction)}</code></pre>
+    <p>After 2 seconds, the following action will be sent to return to this tab</p>
+    <pre><code>{format(endAction)}</code></pre>
     <div className="input-group">
       <select ref={selectRef} className="custom-select" aria-label="Example select with button addon">
         <option>image</option>
@@ -34,7 +34,7 @@ const DisplayInformationPane: React.FC = () => {
         <option>datagrid</option>
       </select>
       <div className="input-group-append">
-        <button onClick={sendMessage} className="btn btn-outline-primary" type="button">Send Message</button>
+        <button onClick={sendAction} className="btn btn-outline-primary" type="button">Send Action</button>
       </div>
     </div>
   </div>

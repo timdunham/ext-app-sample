@@ -21,38 +21,42 @@ export default function ConfiguratorEventListener() {
             dispatch(ReceivedMessages.actionCreators.receiveMessage(JSON.stringify(eventData)));
 
             switch (command) {
-                case "RollbackPreviousMessages":
-                case "InitializeEvent":
-                    break;
                 case "MessagesEnd":
-                    dispatch(ReceivedMessages.actionCreators.sendMessage(Messages.messageCreators.displayInformationPane("externalapplication")));
+                case "RollbackPreviousMessages":
                     break;
-                case "ConfigureEvent":
+                case "InitializeCommand":
+                    if (eventData.data.showExternalAppPane) {
+                        dispatch(ReceivedMessages.actionCreators.sendMessage(Messages.messageCreators.displayInformationPane("externalapplication")));
+                    }
+                    break;
+                case "ConfigureCommand":
                     history.push("/send/configure");
                     break;
-                case "FinishConfigurationEvent":
+                case "FinishConfigurationCommand":
                     history.push("/send/finish");
                     break;
-                case "ProcessingEvent":
+                case "ProcessingCommand":
                     history.push("/send/processing");
                     break;
-                case "DisplayInformationPaneEvent":
+                case "DisplayInformationPaneCommand":
                     history.push("/send/displayInformationPane");
                     break;
-                case "SaveOutputFileEvent":
+                case "SaveOutputFileCommand":
                     dispatch(SaveOutputFileState.actionCreators.setScreenOptionId(eventData.data.screenId));
                     history.push("/send/saveOutputFile");
                     break;
-                case "SetScreenOptionEvent":
+                case "SetScreenOptionCommand":
                     dispatch(SetScreenOptionState.actionCreators.setScreenOptionId(eventData.data.screenId));
                     history.push("/send/setScreenOption");
                     break;
-                case "FocusScreenOptionEvent":
+                case "FocusScreenOptionCommand":
                     const message = FocusScreenOptionState.actionCreators.focusScreenOptionIds(eventData.data.screenId, eventData.data.screenId2);
                     dispatch(message);
                     history.push("/send/focusScreenOption");
                     break;
             }
+
+            //there are 3 events where we don't want to show the external application tab,
         }
 
         window.addEventListener("message", handleMessage);

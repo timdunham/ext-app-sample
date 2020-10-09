@@ -17,9 +17,9 @@ const Home: React.FC = () => {
   };
   return (
     <div>
-      <h1>Infor CPQ - External Application Tutorial</h1>
+      <h3>Infor CPQ - External Application Tutorial</h3>
       <p>This page will show you how to create an external application for use inside Infor CPQ Configurator.</p>
-      <h2>Get Started</h2>
+      <h4>Get Started</h4>
       <ol>
         <li>Copy the text below.</li>
         <li>Open Design Studio</li>

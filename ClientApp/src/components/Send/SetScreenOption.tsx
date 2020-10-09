@@ -24,7 +24,7 @@ const SetScreenOption: React.FC = () => {
 
   return (
     <div>
-      <h1>Message: <code>setScreenOption</code></h1>
+      <h3>The <code>setScreenOption</code> action</h3>
       Received a message with the following screen id:
       <pre><code>{state.screenOptionId}</code></pre>
       When you send the message it will take the value in the text box and set the value of the screen option using a message like this:

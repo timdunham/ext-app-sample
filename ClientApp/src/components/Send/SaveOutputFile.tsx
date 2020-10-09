@@ -33,7 +33,7 @@ const SaveOutputFile: React.FC = () => {
   }
   return (
     <div>
-      <h1>Message: <code>saveOutputFile</code></h1>
+      <h3>The <code>saveOutputFile</code> action</h3>
       This message will allow a file to be sent to configurator to be saved as output with the current configuration.
       <br />
       <pre><code>{format(saveOutputFile)}</code></pre>

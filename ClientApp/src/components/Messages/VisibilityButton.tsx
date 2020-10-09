@@ -12,7 +12,7 @@ export interface VisibilityProps {
 const VisibilityButton: React.FC<VisibilityProps> = (props) => {
   const dispatch = useDispatch();
   const setVisibility = () => dispatch(ReceivedMessages.actionCreators.setVisibility(props.visibility));
-  const outline = (props.current == props.visibility) ? "" : "-outline";
+  const outline = (props.current === props.visibility) ? "" : "-outline";
   const className = `btn btn${outline}-${props.color}`
   return <button onClick={setVisibility} type="button" className={className}>{props.label}</button>
 }
