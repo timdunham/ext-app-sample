@@ -1,4 +1,4 @@
-<Ruleset Namespace="Default" Name="SampleExternalApplication" DefaultPageCaption="" EntityId="1fdc38f7-2e5c-40ea-8dc3-a670f87ea78e" ExternalUIName="Infor Design System (V2 Engine)" BackgroundProcessingEngineName="version2" IsStatelessEngineCompliant="true">
+<Ruleset Namespace="Default" Name="SampleExternalApplication" DefaultPageCaption="" EntityId="9029a5be-c9bb-4532-a8f8-581c4f4bcb06" ExternalUIName="Infor Design System" BackgroundProcessingEngineName="version2" IsStatelessEngineCompliant="true">
   <Tags />
   <ComponentAttributes>
     <ComponentAttribute Namespace="Default" Ruleset="SampleExternalApplication" Name="activity" DataType="String" Caption="" Description="" IsLocked="false" IsVisible="true" IsPersistToOutput="true" Tooltip="" InformationMessage="" InfoLink="" AppLink="" IsHighlight="false" AutoContinue="0" IsRequired="false" DefaultGroup="" OptionListID="" DisplayFormat="" DisplayPrecision="" DisplayType="TextBox" PrintCode="" />
@@ -18,7 +18,7 @@
         <RuleData>
           <Tab Key="" DisplayName="ExternalApplicationSettingsTab">
             <Properties Key="Url" DisplayName="Url">
-              <Property Key="Url" DisplayName="URL" Value="https://localhost:5001" IsRequired="true" ExpressionType="Expression" SelectionType="Optional" SelectionSource="Threekit" />
+              <Property Key="Url" DisplayName="URL" Value="https://onpremcfg.pcm.infor.com/ext-app-sample" IsRequired="true" ExpressionType="Expression" SelectionType="Optional" SelectionSource="Threekit" />
               <Property Key="TabName" DisplayName="Tab Caption" Value="Sample External Application" ExpressionType="Expression" SelectionType="None" />
               <Property Key="WaitForMessage" DisplayName="Wait For Message" Value="=False" DefaultValue="=True" IsRequired="true" ExpressionType="Expression" SelectionType="Predefined" SelectionSource="BoolExpression" />
             </Properties>
@@ -42,10 +42,10 @@
     <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Variable" Caption="Create Option List with all the commands" ConditionExpression="" Enabled="true">
       <vars>
         <var id="b71b8df0-7072-4a66-a23b-a1720f13ba9a" name="activityOL">
-          <value>=CreateSet</value>
+          <value>=CreateSet()</value>
         </var>
         <var id="d069d32c-bfb6-4b95-8566-9a7e96fca0f9" name="temp">
-          <value>=CreateSet</value>
+          <value>=CreateSet()</value>
         </var>
         <var id="9033ccf5-a479-46c1-b70e-8fe52783ab58" name="temp.Value">
           <value>setScreenOption</value>
@@ -215,6 +215,9 @@
           <var id="3b5979d6-f52d-4344-9ff8-6b32c94987f3" name="SetScreenOptionCommand.command">
             <value>SetScreenOptionCommand</value>
           </var>
+          <var id="d914b9b1-a1dc-41da-bb07-213b70a36bec" name="SetScreenOptionCommand.data">
+            <value>=CreateSet()</value>
+          </var>
           <var id="6cb627bf-94e9-4bf2-b9cb-86f05c6218ba" name="SetScreenOptionCommand.data.screenId">
             <value>=valueToSet.screenOptionId</value>
           </var>
@@ -252,6 +255,9 @@
           </var>
           <var id="3b5979d6-f52d-4344-9ff8-6b32c94987f3" name="FocusScreenOptionCommand.command">
             <value>FocusScreenOptionCommand</value>
+          </var>
+          <var id="32910980-ed1f-4f29-9971-a2f02286c398" name="FocusScreenOptionCommand.data">
+            <value>=CreateSet()</value>
           </var>
           <var id="6cb627bf-94e9-4bf2-b9cb-86f05c6218ba" name="FocusScreenOptionCommand.data.screenId">
             <value>=valueToFocus.screenOptionId</value>
@@ -355,6 +361,9 @@
     </Rule>
     <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Variable" Caption="Fill the command variable with data" ConditionExpression="" Enabled="true">
       <vars>
+        <var id="10a8b115-37c3-4600-b193-2a92928fed0b" name="InitializeCommand">
+          <value>=createset()</value>
+        </var>
         <var id="e7eee5d2-c66e-4d92-8f9e-2de71ffe7eac" name="InitializeCommand.command">
           <value>InitializeCommand</value>
         </var>
