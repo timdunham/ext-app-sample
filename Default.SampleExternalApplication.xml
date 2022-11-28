@@ -1,9 +1,17 @@
-<Ruleset Namespace="Default" Name="SampleExternalApplication" DefaultPageCaption="" EntityId="9029a5be-c9bb-4532-a8f8-581c4f4bcb06" ExternalUIName="Infor Design System" BackgroundProcessingEngineName="version2" IsStatelessEngineCompliant="true">
+<Ruleset Namespace="Default" Name="SampleExternalApplication" DefaultPageCaption="" EntityId="5ca3b86a-949f-4a3d-99ad-503f9b29f6b2" ExternalUIName="Infor Design System" BackgroundProcessingEngineName="version2" IsStatelessEngineCompliant="true">
   <Tags />
   <ComponentAttributes>
     <ComponentAttribute Namespace="Default" Ruleset="SampleExternalApplication" Name="activity" DataType="String" Caption="" Description="" IsLocked="false" IsVisible="true" IsPersistToOutput="true" Tooltip="" InformationMessage="" InfoLink="" AppLink="" IsHighlight="false" AutoContinue="0" IsRequired="false" DefaultGroup="" OptionListID="" DisplayFormat="" DisplayPrecision="" DisplayType="TextBox" PrintCode="" />
   </ComponentAttributes>
   <RuleTree Type="Interactive">
+    <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Screen" Caption="External Application Name" ConditionExpression="" Enabled="true">
+      <Screen Title="" ShowTitle="=False" ShowLine="=False" ShowDescription="=False" ShowExpandCollapse="=False" IsVisible="=True" Description="" PageBreakAfter="=False" PageCaption="" AppLink="" InfoLink="" ImageLink="" Pause="=False" PauseMessage="" PauseMessageStyle="" PauseTitle="" ScreenStyle="">
+        <ScreenOption Sequence="1" Name="ExternalApplicationName" Caption="External Application Name" DefaultValue="=&quot;&quot;" SelectOptionsImageLinkFieldExpression="ImageLink">
+          <Columns />
+          <LookupCollectionOption />
+        </ScreenOption>
+      </Screen>
+    </Rule>
     <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Screen" Caption="Restart" ConditionExpression="" Enabled="true">
       <Screen Title="" ShowTitle="=False" ShowLine="=False" ShowDescription="=False" ShowExpandCollapse="=False" IsVisible="=True" Description="" PageBreakAfter="=False" PageCaption="" AppLink="" InfoLink="" ImageLink="" Pause="=False" PauseMessage="" PauseMessageStyle="" PauseTitle="" ScreenStyle="">
         <ScreenOption Sequence="1" Name="restart" Caption="restart" DisplayType="5" AutoContinue="=1" SelectOptionsImageLinkFieldExpression="ImageLink">
@@ -18,7 +26,8 @@
         <RuleData>
           <Tab Key="" DisplayName="ExternalApplicationSettingsTab">
             <Properties Key="Url" DisplayName="Url">
-              <Property Key="Url" DisplayName="URL" Value="https://onpremcfg.pcm.infor.com/ext-app-sample" IsRequired="true" ExpressionType="Expression" SelectionType="Optional" SelectionSource="Threekit" />
+              <Property Key="Name" Value="=ExternalApplicationName" ExpressionType="Expression" SelectionType="None" />
+              <Property Key="Url" DisplayName="URL" Value="https://localhost:5001" IsRequired="true" ExpressionType="Expression" SelectionType="Optional" SelectionSource="Threekit" />
               <Property Key="TabName" DisplayName="Tab Caption" Value="Sample External Application" ExpressionType="Expression" SelectionType="None" />
               <Property Key="WaitForMessage" DisplayName="Wait For Message" Value="=False" DefaultValue="=True" IsRequired="true" ExpressionType="Expression" SelectionType="Predefined" SelectionSource="BoolExpression" />
             </Properties>
@@ -34,6 +43,7 @@
       <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Set External Application Data" Caption="Specify the variable name of a Command" ConditionExpression="" Enabled="true">
         <RuleData>
           <Properties Key="Data" DisplayName="Data">
+            <Property Key="TargetExternalApplicationName" DisplayName="Target External Application Name" Value="=ExternalApplicationName" ExpressionType="Expression" SelectionType="None" />
             <Property Key="DataVariableName" DisplayName="Data Variable Name" Value="InitializeCommand" ExpressionType="Expression" SelectionType="Predefined" SelectionSource="ComponentAttributes" />
           </Properties>
         </RuleData>
@@ -171,6 +181,7 @@
       <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Set External Application Data" Caption="register the ConfigureCommand to be sent to the external application" ConditionExpression="" Enabled="true">
         <RuleData>
           <Properties Key="Data" DisplayName="Data">
+            <Property Key="TargetExternalApplicationName" DisplayName="Target External Application Name" Value="=ExternalApplicationName" ExpressionType="Expression" SelectionType="None" />
             <Property Key="DataVariableName" DisplayName="Data Variable Name" Value="ConfigureCommand" ExpressionType="Expression" SelectionType="Predefined" SelectionSource="ComponentAttributes" />
           </Properties>
         </RuleData>
@@ -193,6 +204,7 @@
       <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Set External Application Data" Caption="register the FinishConfigurationCommand to be sent to the external application" ConditionExpression="" Enabled="true">
         <RuleData>
           <Properties Key="Data" DisplayName="Data">
+            <Property Key="TargetExternalApplicationName" DisplayName="Target External Application Name" Value="=ExternalApplicationName" ExpressionType="Expression" SelectionType="None" />
             <Property Key="DataVariableName" DisplayName="Data Variable Name" Value="FinishConfigurationCommand" ExpressionType="Expression" SelectionType="Predefined" SelectionSource="ComponentAttributes" />
           </Properties>
         </RuleData>
@@ -226,6 +238,7 @@
       <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Set External Application Data" Caption="register the SetScreenOptionCommand to be sent to the external application" ConditionExpression="" Enabled="true">
         <RuleData>
           <Properties Key="Data" DisplayName="Data">
+            <Property Key="TargetExternalApplicationName" DisplayName="Target External Application Name" Value="=ExternalApplicationName" ExpressionType="Expression" SelectionType="None" />
             <Property Key="DataVariableName" DisplayName="Data Variable Name" Value="SetScreenOptionCommand" ExpressionType="Expression" SelectionType="Predefined" SelectionSource="ComponentAttributes" />
           </Properties>
         </RuleData>
@@ -270,6 +283,7 @@
       <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Set External Application Data" Caption="register the FocusScreenOptionCommand to be sent to the external application" ConditionExpression="" Enabled="true">
         <RuleData>
           <Properties Key="Data" DisplayName="Data">
+            <Property Key="TargetExternalApplicationName" DisplayName="Target External Application Name" Value="=ExternalApplicationName" ExpressionType="Expression" SelectionType="None" />
             <Property Key="DataVariableName" DisplayName="Data Variable Name" Value="FocusScreenOptionCommand" ExpressionType="Expression" SelectionType="Predefined" SelectionSource="ComponentAttributes" />
           </Properties>
         </RuleData>
@@ -292,6 +306,7 @@
       <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Set External Application Data" Caption="register the ProcessingCommand to be sent to the external application" ConditionExpression="" Enabled="true">
         <RuleData>
           <Properties Key="Data" DisplayName="Data">
+            <Property Key="TargetExternalApplicationName" DisplayName="Target External Application Name" Value="=ExternalApplicationName" ExpressionType="Expression" SelectionType="None" />
             <Property Key="DataVariableName" DisplayName="Data Variable Name" Value="ProcessingCommand" ExpressionType="Expression" SelectionType="Predefined" SelectionSource="ComponentAttributes" />
           </Properties>
         </RuleData>
@@ -325,6 +340,7 @@
       <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Set External Application Data" Caption="register the SaveOutputFileCommand to be sent to the external application" ConditionExpression="" Enabled="true">
         <RuleData>
           <Properties Key="Data" DisplayName="Data">
+            <Property Key="TargetExternalApplicationName" DisplayName="Target External Application Name" Value="=ExternalApplicationName" ExpressionType="Expression" SelectionType="None" />
             <Property Key="DataVariableName" DisplayName="Data Variable Name" Value="SaveOutputFileCommand" ExpressionType="Expression" SelectionType="Predefined" SelectionSource="ComponentAttributes" />
           </Properties>
         </RuleData>
@@ -347,13 +363,17 @@
             <value>DisplayInformationPaneCommand</value>
           </var>
           <var id="6cb627bf-94e9-4bf2-b9cb-86f05c6218ba" name="DisplayInformationPaneCommand.data">
-            <value>=null</value>
+            <value>=CreateSet()</value>
+          </var>
+          <var id="8e4049e8-df68-4a0c-b0dc-fbfacf28b01e" name="DisplayInformationPaneCommand.data.externalApplicationName">
+            <value>=ExternalApplicationName</value>
           </var>
         </vars>
       </Rule>
       <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Set External Application Data" Caption="register the DisplayInformationPaneCommand to be sent to the external application" ConditionExpression="" Enabled="true">
         <RuleData>
           <Properties Key="Data" DisplayName="Data">
+            <Property Key="TargetExternalApplicationName" DisplayName="Target External Application Name" Value="=ExternalApplicationName" ExpressionType="Expression" SelectionType="None" />
             <Property Key="DataVariableName" DisplayName="Data Variable Name" Value="DisplayInformationPaneCommand" ExpressionType="Expression" SelectionType="Predefined" SelectionSource="ComponentAttributes" />
           </Properties>
         </RuleData>
