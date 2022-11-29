@@ -4,7 +4,7 @@ import { ApplicationState } from '../../store';
 import * as Messages from '../../store/Messages';
 import ActionChain from './ActionChain';
 
-enum InformationPane {
+export enum InformationPane {
   Image = "image",
   Detail = "detail",
   InformationLink = "informationlink",

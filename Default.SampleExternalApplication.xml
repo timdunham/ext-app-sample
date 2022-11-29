@@ -393,6 +393,9 @@
         <var id="79526953-d4c1-45d1-9d9a-036c5418b93d" name="InitializeCommand.data.showExternalAppPane">
           <value>=sys.fixed.showExternalAppPane</value>
         </var>
+        <var id="88a274c9-a498-46e7-83c3-ed2635ec88e4" name="InitializeCommand.data.externalApplicationName">
+          <value>=ExternalApplicationName</value>
+        </var>
       </vars>
       <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Set Fixed Values" Caption="showExternalAppPane" ConditionExpression="" Enabled="true">
         <RuleData>
