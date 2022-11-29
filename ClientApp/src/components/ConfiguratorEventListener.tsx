@@ -6,6 +6,8 @@ import { useHistory } from 'react-router-dom';
 import * as SetScreenOptionState from '../store/SetScreenOptionStore';
 import * as FocusScreenOptionState from '../store/FocusScreenOptionStore';
 import * as SaveOutputFileState from '../store/SaveOutputFileStore';
+import * as DisplayInformationPaneState from '../store/DisplayInformationPaneStore';
+import { InformationPane } from './Send/DisplayInformationPane';
 
 export default function ConfiguratorEventListener() {
     var dispatch = useDispatch();
@@ -26,7 +28,7 @@ export default function ConfiguratorEventListener() {
                     break;
                 case "InitializeCommand":
                     if (eventData.data.showExternalAppPane) {
-                        dispatch(ReceivedMessages.actionCreators.sendMessage(Messages.messageCreators.displayInformationPane("externalapplication")));
+                        dispatch(ReceivedMessages.actionCreators.sendMessage(Messages.messageCreators.displayInformationPane(InformationPane.ExternalApplication, eventData.data.externalApplicationName)));
                     }
                     break;
                 case "ConfigureCommand":
@@ -39,6 +41,7 @@ export default function ConfiguratorEventListener() {
                     history.push("/send/processing");
                     break;
                 case "DisplayInformationPaneCommand":
+                    dispatch(DisplayInformationPaneState.actionCreators.sampleAppExternalApplicationName(eventData.data.externalApplicationName));
                     history.push("/send/displayInformationPane");
                     break;
                 case "SaveOutputFileCommand":
