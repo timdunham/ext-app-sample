@@ -7,6 +7,7 @@ import * as SetScreenOptionState from '../store/SetScreenOptionStore';
 import * as FocusScreenOptionState from '../store/FocusScreenOptionStore';
 import * as SaveOutputFileState from '../store/SaveOutputFileStore';
 import * as DisplayInformationPaneState from '../store/DisplayInformationPaneStore';
+import * as ExternalApplicationDisplayedState from '../store/ExternalApplicationDisplayedStore';
 import { InformationPane } from './Send/DisplayInformationPane';
 
 export default function ConfiguratorEventListener() {
@@ -56,6 +57,11 @@ export default function ConfiguratorEventListener() {
                     const message = FocusScreenOptionState.actionCreators.focusScreenOptionIds(eventData.data.screenId, eventData.data.screenId2);
                     dispatch(message);
                     history.push("/send/focusScreenOption");
+                    break;
+                case "ExternalApplicationDisplayed":
+                    const externalApplicationDisplayedMessage = ExternalApplicationDisplayedState.actionCreators.externalApplicationDisplayedId(eventData.data.screenOptionId);
+                    dispatch(externalApplicationDisplayedMessage);
+                    history.push("/receive/externalApplicationDisplayed");
                     break;
             }
         }

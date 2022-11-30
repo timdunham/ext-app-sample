@@ -12,6 +12,7 @@ import Finish from './components/Send/Finish';
 import Processing from './components/Send/Processing';
 import SaveOutputFile from './components/Send/SaveOutputFile';
 import DisplayInformationPane from './components/Send/DisplayInformationPane';
+import ExternalApplicationDisplayed from './components/Send/ExternalApplicationDisplayed';
 
 export default () => (
     <Layout>
@@ -23,6 +24,7 @@ export default () => (
         <Route path='/send/finish' component={Finish} />
         <Route path='/send/displayInformationPane' component={DisplayInformationPane} />
         <Route path='/send/processing' component={Processing} />
+        <Route path='/receive/externalApplicationDisplayed' component={ExternalApplicationDisplayed} />
         <ConfiguratorEventListener />
     </Layout>
 );
