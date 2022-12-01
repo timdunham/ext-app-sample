@@ -27,6 +27,7 @@ export default () => (
         <Route path='/send/requestScreenOptionUIData' component={RequestScreenOptionUIData} />
         <Route path='/send/processing' component={Processing} />
         <Route path='/receive/externalApplicationDisplayed' component={ExternalApplicationDisplayed} />
+        <Route path='/send/requestScreenOptionUiData' component={RequestScreenOptionUIData} />
         <ConfiguratorEventListener />
     </Layout>
 );

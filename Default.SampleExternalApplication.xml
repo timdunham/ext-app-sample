@@ -139,13 +139,13 @@
         <var id="4fa85a0e-24bb-4a48-893d-bb6c6f55d4b1" name="activityOL[temp.value]">
           <value>=temp</value>
         </var>
-        <var id="0f5c6ebd-c85b-4c7f-9e9c-065fe2fc7d6f" name="temp.Value">
-          <value>requestScreenOptionUIData</value>
+        <var id="6ba432d4-c62a-45b3-bc25-e98cf0c9d9b8" name="temp.Value">
+          <value>requestScreenOptionUiData</value>
         </var>
-        <var id="d9d1f39f-52ff-46ef-801d-128d45bd50f6" name="temp.Order">
+        <var id="e75f8fd9-7199-480f-9d5f-ddad6c75308c" name="temp.Order">
           <value>=8</value>
         </var>
-        <var id="7233e70d-a285-49c6-93b0-58eab043ff1c" name="activityOL[temp.value]">
+        <var id="67b2b3c1-28d3-4eb8-9936-27ae815f2efb" name="activityOL[temp.value]">
           <value>=temp</value>
         </var>
       </vars>
@@ -415,22 +415,47 @@
         </RuleData>
       </Rule>
     </Rule>
-    <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Condition" Caption="RequestScreenOptionUIDataCommand Pane" ConditionExpression="=activity = &quot;requestScreenOptionUIData&quot;" Enabled="true">
-      <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Variable" Caption="RequestScreenOptionUIDataCommand data" ConditionExpression="" Enabled="true">
+    <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Condition" Caption="RequestScreenOptionUiData" ConditionExpression="=activity = &quot;requestScreenOptionUiData&quot;" Enabled="true">
+      <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Screen" Caption="Create valueToSet screen option" ConditionExpression="" Enabled="true">
+        <Screen Title="RequestScreenOptionUiData Action" ShowTitle="=True" ShowLine="=False" ShowDescription="=True" ShowExpandCollapse="=False" IsVisible="=True" Description="The requestScreenOptionUiData action requires a screen option id.  This can be found as the ScreenOptionId property of a component attribute that has appeard on a screen rule.  This value must be passed to the external application using the Set External Application Data rule.  When you selected this option, the rules sent that command." PageBreakAfter="=True" PageCaption="Page 2" AppLink="" InfoLink="" ImageLink="" Pause="=False" PauseMessage="" PauseMessageStyle="" PauseTitle="" ScreenStyle="">
+          <ScreenOption Sequence="1" Name="valueToRequestUiData" Caption="Request UI Data Screen Option 1" SelectOptionsImageLinkFieldExpression="ImageLink">
+            <Columns />
+            <LookupCollectionOption />
+          </ScreenOption>
+        </Screen>
+      </Rule>
+      <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Screen" Caption="Create valueToSetPage2 screen option" ConditionExpression="" Enabled="true">
+        <Screen Title="Configure" ShowTitle="=False" ShowLine="=False" ShowDescription="=False" ShowExpandCollapse="=False" IsVisible="=True" Description="" PageBreakAfter="=False" PageCaption="" AppLink="" InfoLink="" ImageLink="" Pause="=False" PauseMessage="" PauseMessageStyle="" PauseTitle="" ScreenStyle="">
+          <ScreenOption Sequence="1" Name="valueToRequestUiData2" Caption="Request UI Data Screen Option 2 on Page 2" SelectOptionsImageLinkFieldExpression="ImageLink">
+            <Columns />
+            <LookupCollectionOption />
+          </ScreenOption>
+        </Screen>
+      </Rule>
+      <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Variable" Caption="SetScreenOptionCommand data" ConditionExpression="" Enabled="true">
         <vars>
-          <var id="435283de-a3f1-441b-86f5-15378007270c" name="RequestScreenOptionUIDataCommand">
+          <var id="435283de-a3f1-441b-86f5-15378007270c" name="RequestScreenOptionUiDataCommand">
             <value>=CreateSet()</value>
           </var>
-          <var id="3b5979d6-f52d-4344-9ff8-6b32c94987f3" name="RequestScreenOptionUIDataCommand.command">
-            <value>RequestScreenOptionUIDataCommand</value>
+          <var id="3b5979d6-f52d-4344-9ff8-6b32c94987f3" name="RequestScreenOptionUiDataCommand.command">
+            <value>RequestScreenOptionUiDataCommand</value>
+          </var>
+          <var id="32910980-ed1f-4f29-9971-a2f02286c398" name="RequestScreenOptionUiDataCommand.data">
+            <value>=CreateSet()</value>
+          </var>
+          <var id="6cb627bf-94e9-4bf2-b9cb-86f05c6218ba" name="RequestScreenOptionUiDataCommand.data.screenId">
+            <value>=valueToRequestUiData.screenOptionId</value>
+          </var>
+          <var id="65155d88-390c-4f53-83c2-a7d106723a89" name="RequestScreenOptionUiDataCommand.data.screenId2">
+            <value>=valueToRequestUiData2.screenOptionId</value>
           </var>
         </vars>
       </Rule>
-      <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Set External Application Data" Caption="register the RequestScreenOptionUIDataCommand to be sent to the external application" ConditionExpression="" Enabled="true">
+      <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Set External Application Data" Caption="register the RequestScreenOptionUiDataCommand to be sent to the external application" ConditionExpression="" Enabled="true">
         <RuleData>
           <Properties Key="Data" DisplayName="Data">
             <Property Key="TargetExternalApplicationName" DisplayName="Target External Application Name" Value="=ExternalApplicationName" ExpressionType="Expression" SelectionType="None" />
-            <Property Key="DataVariableName" DisplayName="Data Variable Name" Value="RequestScreenOptionUIDataCommand" ExpressionType="Expression" SelectionType="Predefined" SelectionSource="ComponentAttributes" />
+            <Property Key="DataVariableName" DisplayName="Data Variable Name" Value="RequestScreenOptionUiDataCommand" ExpressionType="Expression" SelectionType="Predefined" SelectionSource="ComponentAttributes" />
           </Properties>
         </RuleData>
       </Rule>

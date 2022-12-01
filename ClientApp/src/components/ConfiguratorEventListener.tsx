@@ -9,7 +9,7 @@ import * as SaveOutputFileState from '../store/SaveOutputFileStore';
 import * as DisplayInformationPaneState from '../store/DisplayInformationPaneStore';
 import * as ExternalApplicationDisplayedState from '../store/ExternalApplicationDisplayedStore';
 import { InformationPane } from './Send/DisplayInformationPane';
-import * as ScreenOptionUIDataStore from '../store/ScreenOptionUIData';
+import * as RequestScreenOptionUiDataState from '../store/RequestScreenOptionUiDataStore';
 
 export default function ConfiguratorEventListener() {
     var dispatch = useDispatch();
@@ -57,19 +57,20 @@ export default function ConfiguratorEventListener() {
                 case "RequestScreenOptionUIDataCommand":
                     history.push("/send/requestScreenOptionUIData");
                     break;
-                case "screenOptionUIData":
-                    const uiDataMessage = ScreenOptionUIDataStore.actionCreators.screenOptionUIData(JSON.stringify(eventData.data));
-                    dispatch(uiDataMessage);
-                    break;
                 case "FocusScreenOptionCommand":
-                    const message = FocusScreenOptionState.actionCreators.focusScreenOptionIds(eventData.data.screenId, eventData.data.screenId2);
-                    dispatch(message);
+                    const focusMessage = FocusScreenOptionState.actionCreators.focusScreenOptionIds(eventData.data.screenId, eventData.data.screenId2);
+                    dispatch(focusMessage);
                     history.push("/send/focusScreenOption");
                     break;
                 case "ExternalApplicationDisplayed":
                     const externalApplicationDisplayedMessage = ExternalApplicationDisplayedState.actionCreators.externalApplicationDisplayedId(eventData.data.screenOptionId);
                     dispatch(externalApplicationDisplayedMessage);
                     history.push("/receive/externalApplicationDisplayed");
+                    break;
+                case "RequestScreenOptionUiDataCommand":
+                    const requestScreenUiMessage = RequestScreenOptionUiDataState.actionCreators.requestScreenOptionUiDataIds(eventData.data.screenId, eventData.data.screenId2);
+                    dispatch(requestScreenUiMessage);
+                    history.push("/send/requestScreenOptionUiData");
                     break;
             }
         }

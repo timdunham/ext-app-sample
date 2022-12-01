@@ -13,7 +13,7 @@ export type ConfigureMessage = { action: "configure" };
 export type FinishConfigurationMessage = { action: "finishConfiguration" };
 export type ProcessingMessage = { action: "processing", isProcessing: boolean, delay?: number, message?: string };
 export type SaveOutputFileMessage = { action: "saveOutputFile", file: File };
-export type RequestScreenOptionUIDataMessage = { action: "requestScreenOptionUIData" };
+export type RequestScreenOptionUiDataMessage = { action: "requestScreenOptionUiData", screenOptionId: string };
 
 export type Message =
     DisplayInformationPaneMessage |
@@ -23,17 +23,16 @@ export type Message =
     FinishConfigurationMessage |
     ProcessingMessage |
     SaveOutputFileMessage |
-    RequestScreenOptionUIDataMessage
-    ;
+    RequestScreenOptionUiDataMessage;
 
 export const messageCreators = {
     displayInformationPane: (pane: string, name?: string) => ({ action: "displayInformationPane", pane, name } as DisplayInformationPaneMessage),
     configure: () => ({ action: "configure" } as ConfigureMessage),
     finishConfiguration: () => ({ action: "finishConfiguration" } as FinishConfigurationMessage),
-    setScreenOption: (screenOptionId: string, value: string) => ({ action: "setScreenOption", screenOptionId, value } as SetScreenOptionMessage),
-    focusScreenOption: (screenOptionId: string) => ({ action: "focusScreenOption", screenOptionId }) as FocusScreenOptionMessage,
-    processing: (isProcessing: boolean, delay?: number, message?: string) => ({ action: "processing", isProcessing, delay, message } as ProcessingMessage),
-    saveOutputFile: (file:File) => ({ action: "saveOutputFile", file } as SaveOutputFileMessage),
-    requestScreenOptionUIData: () => ({ action: "requestScreenOptionUIData" } as RequestScreenOptionUIDataMessage),
+    setScreenOption: (screenOptionId: string, value: string) => ({ action: "setScreenOption", screenOptionId: screenOptionId, value: value } as SetScreenOptionMessage),
+    focusScreenOption: (screenOptionId: string) => ({ action: "focusScreenOption", screenOptionId: screenOptionId }) as FocusScreenOptionMessage,
+    processing: (isProcessing: boolean, delay?: number, message?: string) => ({ action: "processing", isProcessing: isProcessing, delay: delay, message: message } as ProcessingMessage),
+    saveOutputFile: (file:File) => ({ action: "saveOutputFile", file: file } as SaveOutputFileMessage),
+    requestScreenOptionUiData: (screenOptionId: string) => ({ action: "requestScreenOptionUiData", screenOptionId: screenOptionId }) as RequestScreenOptionUiDataMessage,
 }
 

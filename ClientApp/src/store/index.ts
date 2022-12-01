@@ -5,7 +5,7 @@ import * as SaveOutputFileStore from './SaveOutputFileStore';
 import * as RulesetDefinitionStore from './RulesetDefinitionStore';
 import * as DisplayInformationPaneStore from './DisplayInformationPaneStore';
 import * as ExternalApplicationDisplayedStore from './ExternalApplicationDisplayedStore';
-import * as  ScreenOptionUIDataStore from './ScreenOptionUIData';
+import * as RequestScreenOptionUiDataStore from './RequestScreenOptionUiDataStore';
 
 // The top-level state object
 export interface ApplicationState {
@@ -16,7 +16,7 @@ export interface ApplicationState {
     rulesetDefinition: RulesetDefinitionStore.RulesetState;
     displayInformationPane: DisplayInformationPaneStore.DisplayInformationPaneState;
     externalApplicationDisplayed: ExternalApplicationDisplayedStore.ExternalApplicationDisplayedState;
-    screenOptionUIData: ScreenOptionUIDataStore.ScreenOptionUIDataState;
+    requestScreenOptionUiData: RequestScreenOptionUiDataStore.RequestScreenOptionUiDataState;
 }
 // Whenever an action is dispatched, Redux will update each top-level application state property using
 // the reducer with the matching name. It's important that the names match exactly, and that the reducer
@@ -29,7 +29,7 @@ export const reducers = {
     rulesetDefinition: RulesetDefinitionStore.reducer,
     displayInformationPane: DisplayInformationPaneStore.reducer,
     externalApplicationDisplayed: ExternalApplicationDisplayedStore.reducer,
-    screenOptionUIData: ScreenOptionUIDataStore.reducer,
+    requestScreenOptionUiData: RequestScreenOptionUiDataStore.reducer
 };
 
 // This type can be used as a hint on action creators so that its 'dispatch' and 'getState' params are
