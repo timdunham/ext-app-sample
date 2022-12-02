@@ -9,7 +9,7 @@ import * as SaveOutputFileState from '../store/SaveOutputFileStore';
 import * as DisplayInformationPaneState from '../store/DisplayInformationPaneStore';
 import * as ExternalApplicationDisplayedState from '../store/ExternalApplicationDisplayedStore';
 import { InformationPane } from './Send/DisplayInformationPane';
-import * as ScreenOptionUIDataStore from '../store/ScreenOptionUIData';
+import * as UIDataStore from '../store/UiData';
 
 export default function ConfiguratorEventListener() {
     var dispatch = useDispatch();
@@ -54,11 +54,11 @@ export default function ConfiguratorEventListener() {
                     dispatch(SetScreenOptionState.actionCreators.setScreenOptionId(eventData.data.screenId));
                     history.push("/send/setScreenOption");
                     break;
-                case "RequestScreenOptionUIDataCommand":
-                    history.push("/send/requestScreenOptionUIData");
+                case "RequestUIDataCommand":
+                    history.push("/send/requestUiData");
                     break;
-                case "ScreenOptionUiData":
-                    const uiDataMessage = ScreenOptionUIDataStore.actionCreators.screenOptionUIData(JSON.stringify(eventData.data, null, 2));
+                case "UiData":
+                    const uiDataMessage = UIDataStore.actionCreators.UiData(JSON.stringify(eventData.data, null, 2));
                     dispatch(uiDataMessage);
                     break;
                 case "FocusScreenOptionCommand":

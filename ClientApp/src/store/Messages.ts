@@ -13,7 +13,7 @@ export type ConfigureMessage = { action: "configure" };
 export type FinishConfigurationMessage = { action: "finishConfiguration" };
 export type ProcessingMessage = { action: "processing", isProcessing: boolean, delay?: number, message?: string };
 export type SaveOutputFileMessage = { action: "saveOutputFile", file: File };
-export type RequestScreenOptionUIDataMessage = { action: "requestScreenOptionUiData" };
+export type RequestUiDataMessage = { action: "requestUiData" };
 
 export type Message =
     DisplayInformationPaneMessage |
@@ -23,7 +23,7 @@ export type Message =
     FinishConfigurationMessage |
     ProcessingMessage |
     SaveOutputFileMessage |
-    RequestScreenOptionUIDataMessage
+    RequestUiDataMessage
     ;
 
 export const messageCreators = {
@@ -34,6 +34,6 @@ export const messageCreators = {
     focusScreenOption: (screenOptionId: string) => ({ action: "focusScreenOption", screenOptionId }) as FocusScreenOptionMessage,
     processing: (isProcessing: boolean, delay?: number, message?: string) => ({ action: "processing", isProcessing, delay, message } as ProcessingMessage),
     saveOutputFile: (file:File) => ({ action: "saveOutputFile", file } as SaveOutputFileMessage),
-    requestScreenOptionUIData: () => ({ action: "requestScreenOptionUiData", screenOptionId: "will-remove-once-daniel-makes-it-unnecessary" } as RequestScreenOptionUIDataMessage),
+    requestUiData: () => ({ action: "requestUiData" } as RequestUiDataMessage),
 }
 

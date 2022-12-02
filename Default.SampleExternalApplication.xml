@@ -1,4 +1,4 @@
-<Ruleset Namespace="Default" Name="SampleExternalApplication" DefaultPageCaption="" EntityId="b54072a4-160c-4bd2-9d62-21f6fc391cb6" ExternalUIName="Infor Design System" BackgroundProcessingEngineName="version2" IsStatelessEngineCompliant="true">
+<Ruleset Namespace="Default" Name="SampleExternalApplication" DefaultPageCaption="" EntityId="43788d80-9051-499b-8f56-73e53aa574b8" ExternalUIName="Infor Design System" BackgroundProcessingEngineName="version2" IsStatelessEngineCompliant="true">
   <Tags />
   <ComponentAttributes>
     <ComponentAttribute Namespace="Default" Ruleset="SampleExternalApplication" Name="ExternalApplicationName" DataType="String" DefaultValue="" Caption="" Description="" IsLocked="false" IsVisible="true" IsPersistToOutput="true" Tooltip="" InformationMessage="" InfoLink="" AppLink="" IsHighlight="false" AutoContinue="0" IsRequired="false" DefaultGroup="" OptionListID="" DisplayFormat="" DisplayPrecision="" DisplayType="TextBox" PrintCode="" />
@@ -40,7 +40,7 @@
             </List>
           </Tab>
         </RuleData>
-        <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Set External Application" Caption="Create &quot;Second&quot; External Application" ConditionExpression="" Enabled="true">
+        <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Set External Application" Caption="Create &quot;Second&quot; External Application" ConditionExpression="" Enabled="false">
           <RuleData>
             <Tab Key="" DisplayName="ExternalApplicationSettingsTab">
               <Properties Key="Url" DisplayName="Url">
@@ -140,7 +140,7 @@
           <value>=temp</value>
         </var>
         <var id="0f5c6ebd-c85b-4c7f-9e9c-065fe2fc7d6f" name="temp.Value">
-          <value>requestScreenOptionUIData</value>
+          <value>requestUiData</value>
         </var>
         <var id="d9d1f39f-52ff-46ef-801d-128d45bd50f6" name="temp.Order">
           <value>=8</value>
@@ -415,22 +415,22 @@
         </RuleData>
       </Rule>
     </Rule>
-    <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Condition" Caption="RequestScreenOptionUIDataCommand Pane" ConditionExpression="=activity = &quot;requestScreenOptionUIData&quot;" Enabled="true">
-      <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Variable" Caption="RequestScreenOptionUIDataCommand data" ConditionExpression="" Enabled="true">
+    <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Condition" Caption="RequestUIData Pane" ConditionExpression="=activity = &quot;requestUiData&quot;" Enabled="true">
+      <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Variable" Caption="RequestUIData data" ConditionExpression="" Enabled="true">
         <vars>
-          <var id="435283de-a3f1-441b-86f5-15378007270c" name="RequestScreenOptionUIDataCommand">
+          <var id="435283de-a3f1-441b-86f5-15378007270c" name="RequestUIData">
             <value>=CreateSet()</value>
           </var>
-          <var id="3b5979d6-f52d-4344-9ff8-6b32c94987f3" name="RequestScreenOptionUIDataCommand.command">
-            <value>RequestScreenOptionUIDataCommand</value>
+          <var id="3b5979d6-f52d-4344-9ff8-6b32c94987f3" name="RequestUIData.command">
+            <value>RequestUIDataCommand</value>
           </var>
         </vars>
       </Rule>
-      <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Set External Application Data" Caption="register the RequestScreenOptionUIDataCommand to be sent to the external application" ConditionExpression="" Enabled="true">
+      <Rule Namespace="Default" Ruleset="SampleExternalApplication" ChildType="true" RuleTypeName="Set External Application Data" Caption="register the RequestUIData to be sent to the external application" ConditionExpression="" Enabled="true">
         <RuleData>
           <Properties Key="Data" DisplayName="Data">
             <Property Key="TargetExternalApplicationName" DisplayName="Target External Application Name" Value="=ExternalApplicationName" ExpressionType="Expression" SelectionType="None" />
-            <Property Key="DataVariableName" DisplayName="Data Variable Name" Value="RequestScreenOptionUIDataCommand" ExpressionType="Expression" SelectionType="Predefined" SelectionSource="ComponentAttributes" />
+            <Property Key="DataVariableName" DisplayName="Data Variable Name" Value="RequestUIData" ExpressionType="Expression" SelectionType="Predefined" SelectionSource="ComponentAttributes" />
           </Properties>
         </RuleData>
       </Rule>

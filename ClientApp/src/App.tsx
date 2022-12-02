@@ -13,7 +13,7 @@ import Processing from './components/Send/Processing';
 import SaveOutputFile from './components/Send/SaveOutputFile';
 import DisplayInformationPane from './components/Send/DisplayInformationPane';
 import ExternalApplicationDisplayed from './components/Send/ExternalApplicationDisplayed';
-import RequestScreenOptionUIData from './components/Send/RequestScreenOptionUIData';
+import RequestUIData from './components/Send/RequestUIData';
 
 export default () => (
     <Layout>
@@ -24,7 +24,7 @@ export default () => (
         <Route path='/send/configure' component={Configure} />
         <Route path='/send/finish' component={Finish} />
         <Route path='/send/displayInformationPane' component={DisplayInformationPane} />
-        <Route path='/send/requestScreenOptionUIData' component={RequestScreenOptionUIData} />
+        <Route path='/send/requestUiData' component={RequestUIData} />
         <Route path='/send/processing' component={Processing} />
         <Route path='/receive/externalApplicationDisplayed' component={ExternalApplicationDisplayed} />
         <ConfiguratorEventListener />
