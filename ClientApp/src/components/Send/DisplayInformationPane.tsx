@@ -27,6 +27,18 @@ const DisplayInformationPane: React.FC = () =>
 
   const startAction = Messages.messageCreators.displayInformationPane(pane, externalApplicationName);
   const endAction = Messages.messageCreators.displayInformationPane(InformationPane.ExternalApplication, thisExternalApplicationName);
+  const ShowExternalApplicationNames : React.FC = () =>
+  {
+      if (pane==InformationPane.ExternalApplication)
+      {
+        return <div>
+          <ExternalApplicationNameInput value={externalApplicationName} label={"External Application Name"} onChange={(e) => setExternalApplicationName(e.target.value)} clear={() => setExternalApplicationName(undefined)} />
+          <ExternalApplicationNameInput value={thisExternalApplicationName} label={"This Sample External Application Name"} onChange={(e) => setThisExternalApplicationName(e.target.value)} clear={() => setThisExternalApplicationName(undefined)} />
+
+        </div>;
+      }
+      return <div />
+  }
 
   return (<div>
     <h3>The <code>displayInformationPane</code> action</h3>
@@ -48,12 +60,12 @@ const DisplayInformationPane: React.FC = () =>
         <option>{InformationPane.ExternalApplication}</option>
       </select>
     </div>
-    <ExternalApplicationNameInput value={externalApplicationName} label={"External Application Name"} onChange={(e) => setExternalApplicationName(e.target.value)} clear={() => setExternalApplicationName(undefined)} />
-    <ExternalApplicationNameInput value={thisExternalApplicationName} label={"This Sample External Application Name"} onChange={(e) => setThisExternalApplicationName(e.target.value)} clear={() => setThisExternalApplicationName(undefined)} />
+    <ShowExternalApplicationNames />
     <br/>
     <ActionChain actions={[startAction, endAction]} delay={2000} />
   </div>
   )
+
 };
 
 export default DisplayInformationPane;

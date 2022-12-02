@@ -17,4 +17,5 @@ pre {
   border-left: 3px solid darkgray;
   background: lightgray;
   padding-left: 10px;
+  max-height: 400px;
 }

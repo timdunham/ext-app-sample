@@ -57,8 +57,8 @@ export default function ConfiguratorEventListener() {
                 case "RequestScreenOptionUIDataCommand":
                     history.push("/send/requestScreenOptionUIData");
                     break;
-                case "screenOptionUIData":
-                    const uiDataMessage = ScreenOptionUIDataStore.actionCreators.screenOptionUIData(JSON.stringify(eventData.data));
+                case "ScreenOptionUiData":
+                    const uiDataMessage = ScreenOptionUIDataStore.actionCreators.screenOptionUIData(JSON.stringify(eventData.data, null, 2));
                     dispatch(uiDataMessage);
                     break;
                 case "FocusScreenOptionCommand":
